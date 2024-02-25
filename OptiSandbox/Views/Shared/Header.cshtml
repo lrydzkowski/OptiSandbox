@@ -1,0 +1,21 @@
+﻿@using OptiSandbox.Business.Helpers
+@model OptiSandbox.Models.IPageViewModel<OptiSandbox.Models.SitePageData>
+
+@{
+    HelperResult ItemTemplate(HtmlHelpers.MenuItem item)
+    {
+        @Html.PageLink(Model.CurrentPage)
+
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+<div class="header">
+    <h1>OptiSandbox</h1>
+</div>
+<div class="menu">
+    <div class="menu-content">
+        @Html.PageLink(Model.CurrentPage)
+        @Html.MenuList(SiteDefinition.Current.StartPage, ItemTemplate)
+    </div>
+</div>
