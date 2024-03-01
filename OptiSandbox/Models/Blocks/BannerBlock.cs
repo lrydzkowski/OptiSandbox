@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EPiServer.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace OptiSandbox.Models.Blocks;
 
@@ -10,6 +11,7 @@ public class BannerBlock : SiteBlockData
     public virtual string? Title { get; set; }
 
     [Display(Order = 20, GroupName = SystemTabNames.Content)]
+    [UIHint(UIHint.Textarea)]
     [Required]
     public virtual string? Content { get; set; }
 }

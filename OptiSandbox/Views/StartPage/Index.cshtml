@@ -1,3 +1,24 @@
-﻿@model OptiSandbox.Models.PageViewModel<StartPage>
+﻿@using EPiServer.ServiceLocation
+@model OptiSandbox.Models.PageViewModel<StartPage>
+@{
+    var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+}
+
 
 <h2>@Html.PropertyFor(x => x.CurrentPage.MainTitle)</h2>
+@if (Model.CurrentPage.Banners != null)
+{
+    @foreach (ContentAreaItem? contentAreaItem in Model.CurrentPage.Banners.Items)
+    {
+        if (contentAreaItem == null)
+        {
+            continue;
+        }
+
+        BannerBlock bannerBlock = contentLoader.Get<BannerBlock>(contentAreaItem.ContentLink);
+        <div class="banner">
+            <h3>@bannerBlock.Title</h3>
+            <p>@bannerBlock.Content</p>
+        </div>
+    }
+}

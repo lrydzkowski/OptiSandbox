@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using OptiSandbox.Models.Blocks;
 
 namespace OptiSandbox.Models.Pages;
 
@@ -16,4 +17,13 @@ public class StartPage : SitePageData
     )]
     [Required]
     public virtual string? MainTitle { get; set; }
+
+    [Display(
+        Name = "Banners",
+        Order = 20,
+        GroupName = Globals.GroupNames.Content
+    )]
+    [AllowedTypes([typeof(BannerBlock)])]
+    [Required]
+    public virtual ContentArea? Banners { get; set; }
 }
