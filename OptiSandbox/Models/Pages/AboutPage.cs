@@ -10,7 +10,6 @@ namespace OptiSandbox.Models.Pages;
 public class AboutPage : SitePageData
 {
     [Display(Order = 20, GroupName = SystemTabNames.Content)]
-    [UIHint(UIHint.Textarea)]
     [Required]
-    public virtual string? Content { get; set; }
+    public virtual XhtmlString? Content { get; set; }
 }
