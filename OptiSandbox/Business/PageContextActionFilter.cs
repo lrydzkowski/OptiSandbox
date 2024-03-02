@@ -1,4 +1,5 @@
 ﻿using EPiServer.ServiceLocation;
+using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using OptiSandbox.Models;
@@ -22,7 +23,8 @@ public class PageContextActionFilter : IResultFilter
 
         if (viewModel is IPageViewModel<SitePageData> model)
         {
-            LayoutViewModel layoutModel = model.Layout ?? _contextFactory.CreateLayoutViewModel();
+            ContentReference? currentContentLink = context.HttpContext.GetContentLink();
+            LayoutViewModel layoutModel = model.Layout ?? _contextFactory.CreateLayoutViewModel(currentContentLink);
             if (context.Controller is IModifyLayout layoutController)
             {
                 layoutController.ModifyLayout(layoutModel);

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using EPiServer.SpecializedProperties;
 using OptiSandbox.Models.Blocks;
 
 namespace OptiSandbox.Models.Pages;
@@ -11,14 +12,6 @@ namespace OptiSandbox.Models.Pages;
 public class StartPage : SitePageData
 {
     [Display(
-        Name = "Main title",
-        Order = 10,
-        GroupName = Globals.GroupNames.Content
-    )]
-    [Required]
-    public virtual string? MainTitle { get; set; }
-
-    [Display(
         Name = "Banners",
         Order = 20,
         GroupName = Globals.GroupNames.Content
@@ -26,4 +19,7 @@ public class StartPage : SitePageData
     [AllowedTypes([typeof(BannerBlock)])]
     [Required]
     public virtual ContentArea? Banners { get; set; }
+
+    [Display(GroupName = Globals.GroupNames.SiteSettings, Order = 30)]
+    public virtual LinkItemCollection? FooterLinks { get; set; }
 }

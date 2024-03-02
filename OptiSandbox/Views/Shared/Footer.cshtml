@@ -1,5 +1,22 @@
-﻿<div class="footer">
+﻿@model OptiSandbox.Models.IPageViewModel<OptiSandbox.Models.SitePageData>
+@using EPiServer.SpecializedProperties
+
+<div class="footer">
     <div class="footer-content">
-        <p><a href="#privacy">Privacy</a> | <a href="#terms">Terms</a></p>
+        <p>
+            @if (Model.Layout?.FooterLinks != null)
+            {
+                for (int i = 0; i < Model.Layout.FooterLinks.Count; i++)
+                {
+                    if (i > 0)
+                    {
+                        <span> | </span>
+                    }
+
+                    LinkItem item = Model.Layout.FooterLinks[i];
+                    <a href="@UrlResolver.Current.GetUrl(item.Href)">@item.Text</a>
+                }
+            }
+        </p>
     </div>
 </div>

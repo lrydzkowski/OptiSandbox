@@ -4,7 +4,7 @@
 @{
     HelperResult ItemTemplate(HtmlHelpers.MenuItem item)
     {
-        @Html.PageLink(Model.CurrentPage)
+        @Html.PageLink(item.Page)
 
         return new HelperResult(w => Task.CompletedTask);
     }
@@ -15,7 +15,6 @@
 </div>
 <div class="menu">
     <div class="menu-content">
-        @Html.PageLink(Model.CurrentPage)
-        @Html.MenuList(SiteDefinition.Current.StartPage, ItemTemplate)
+        @Html.MenuList(SiteDefinition.Current.StartPage, ItemTemplate, true)
     </div>
 </div>

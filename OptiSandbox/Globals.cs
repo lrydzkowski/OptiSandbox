@@ -2,7 +2,7 @@
 
 namespace OptiSandbox;
 
-public class Globals
+public static class Globals
 {
     [GroupDefinitions]
     public static class GroupNames
@@ -12,5 +12,11 @@ public class Globals
 
         [Display(Name = SystemTabNames.Content, Order = 20)]
         public const string Content = SystemTabNames.Content;
+
+        [Display(Name = "SiteSettings", Order = 30)]
+        public const string SiteSettings = "SiteSettings";
+
+        [Display(Name = "Specialized", Order = 40)]
+        public const string Specialized = "Specialized";
     }
 }
