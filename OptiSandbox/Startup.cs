@@ -49,6 +49,6 @@ public class Startup
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.UseEndpoints(endpoints => { endpoints.MapContent(); });
+        app.UseEndpoints(endpoints => endpoints.MapContent());
     }
 }
