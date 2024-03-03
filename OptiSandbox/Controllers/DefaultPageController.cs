@@ -1,12 +1,11 @@
 ﻿using EPiServer.Framework.DataAnnotations;
-using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using OptiSandbox.Models;
 
 namespace OptiSandbox.Controllers;
 
 [TemplateDescriptor(Inherited = true)]
-public class DefaultPageController : PageController<SitePageData>
+public class DefaultPageController : PageControllerBase<SitePageData>
 {
     public ViewResult Index(SitePageData currentPage)
     {
