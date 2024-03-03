@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using EPiServer.SpecializedProperties;
+﻿using EPiServer.SpecializedProperties;
 using OptiSandbox.Models.Blocks;
+using System.ComponentModel.DataAnnotations;
 
 namespace OptiSandbox.Models.Pages;
 

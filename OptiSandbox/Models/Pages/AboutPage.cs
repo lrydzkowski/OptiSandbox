@@ -1,5 +1,4 @@
-﻿using EPiServer.Web;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OptiSandbox.Models.Pages;
 
