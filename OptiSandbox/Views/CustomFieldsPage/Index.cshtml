@@ -1,0 +1,41 @@
+﻿@model OptiSandbox.Models.PageViewModel<CustomFieldsPage>
+
+<div class="content-custom-fields-page">
+    <h2>@Html.PropertyFor(x => x.CurrentPage.MainTitle)</h2>
+    <div class="row">
+        <p>@nameof(Model.CurrentPage.RangeInteger)</p>
+        <p>@Html.DisplayFor(x => x.CurrentPage.RangeInteger)</p>
+    </div>
+    <div class="row">
+        <p>@nameof(Model.CurrentPage.RangeDouble)</p>
+        <p>@Html.DisplayFor(x => x.CurrentPage.RangeDouble)</p>
+    </div>
+    <div class="row">
+        <p>@nameof(Model.CurrentPage.PageType)</p>
+        <p>@Html.DisplayFor(x => x.CurrentPage.PageType)</p>
+    </div>
+    <div class="row">
+        <p>@nameof(Model.CurrentPage.PageReference)</p>
+        <p>@Html.DisplayFor(x => x.CurrentPage.PageReference)</p>
+    </div>
+    <div class="row">
+        <p>@nameof(Model.CurrentPage.Image)</p>
+        <p>@Html.DisplayFor(x => x.CurrentPage.Image)</p>
+    </div>
+    <div class="row">
+        <p>@nameof(Model.CurrentPage.Video)</p>
+        <p>@Html.DisplayFor(x => x.CurrentPage.Video)</p>
+    </div>
+    @* <div class="row">
+        <p>@nameof(Model.CurrentPage.Image2)</p>
+        <p>@Html.DisplayFor(x => x.CurrentPage.Image2)</p>
+    </div> *@
+    <div class="row">
+        <p>@nameof(Model.CurrentPage.LinkItemCollection)</p>
+        <p>@Html.DisplayFor(x => x.CurrentPage.LinkItemCollection)</p>
+    </div>
+    <div class="row">
+        <p>@nameof(Model.CurrentPage.LinkItem)</p>
+        <p>@Html.DisplayFor(x => x.CurrentPage.LinkItem)</p>
+    </div>
+</div>

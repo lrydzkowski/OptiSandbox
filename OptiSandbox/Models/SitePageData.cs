@@ -9,6 +9,7 @@ public class SitePageData : PageData
         Order = 10,
         GroupName = Globals.GroupNames.Content
     )]
+    [CultureSpecific]
     [Required]
     public virtual string? MainTitle { get; set; }
 

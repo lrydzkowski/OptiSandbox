@@ -18,5 +18,8 @@ public static class Globals
 
         [Display(Name = "Specialized", Order = 40)]
         public const string Specialized = "Specialized";
+
+        [Display(Name = "Testing", Order = 50)]
+        public const string Testing = "Testing";
     }
 }
