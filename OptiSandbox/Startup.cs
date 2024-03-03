@@ -35,6 +35,8 @@ public class Startup
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>();
         services.Configure<MvcOptions>(options => options.Filters.Add<PageContextActionFilter>());
+
+        services.AddControllers();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -49,6 +51,12 @@ public class Startup
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.UseEndpoints(endpoints => endpoints.MapContent());
+        app.UseEndpoints(
+            endpoints =>
+            {
+                endpoints.MapContent();
+                endpoints.MapControllers();
+            }
+        );
     }
 }
