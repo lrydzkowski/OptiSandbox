@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using EPiServer.Framework.Blobs;
-using EPiServer.SpecializedProperties;
+﻿using EPiServer.SpecializedProperties;
 using EPiServer.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace OptiSandbox.Models.Pages;
 
@@ -41,4 +40,8 @@ public class CustomFieldsPage : SitePageData
 
     [Display(Name = "Link Item", Order = 190, GroupName = Globals.GroupNames.Testing)]
     public virtual LinkItem? LinkItem { get; set; }
+
+    [Display(Name = "", Order = 200, GroupName = Globals.GroupNames.Testing)]
+    [UIHint("aboutpage")]
+    public virtual ContentReference? OtherPageReference { get; set; }
 }
