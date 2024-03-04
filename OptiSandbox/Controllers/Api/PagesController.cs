@@ -24,6 +24,7 @@ public class PagesController : ControllerBase
         newAboutPage.Name = "Test Name 1";
         newAboutPage.MainTitle = "Test Name 1";
         newAboutPage.Content = new XhtmlString("<h1>Test H1 element in the content</h1>");
+        newAboutPage.TestProperty = "haha";
         ContentReference createdPage = _contentRepository.Save(newAboutPage, SaveAction.Publish, AccessLevel.NoAccess);
 
         return Ok(createdPage);

@@ -11,4 +11,8 @@ public class AboutPage : SitePageData
     [Display(Order = 20, GroupName = SystemTabNames.Content)]
     [Required]
     public virtual XhtmlString? Content { get; set; }
+
+    [Display(Order = 30, GroupName = Globals.GroupNames.Content)]
+    [Editable(false)]
+    public virtual string? TestProperty { get; set; }
 }
