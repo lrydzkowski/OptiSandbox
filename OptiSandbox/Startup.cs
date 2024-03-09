@@ -4,7 +4,9 @@ using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using OptiSandbox.Business;
+using OptiSandbox.Business.Rendering;
 
 namespace OptiSandbox;
 
@@ -28,6 +30,10 @@ public class Startup
 
             services.Configure<SchedulerOptions>(options => options.Enabled = false);
         }
+
+        services.Configure<RazorViewEngineOptions>(
+            options => options.ViewLocationExpanders.Add(new SiteViewEngineLocationExpander())
+        );
 
         services
             .AddCmsAspNetIdentity<ApplicationUser>()

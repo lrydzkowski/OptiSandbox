@@ -44,4 +44,13 @@ public class CustomFieldsPage : SitePageData
     [Display(Name = "", Order = 200, GroupName = Globals.GroupNames.Testing)]
     [UIHint("aboutpage")]
     public virtual ContentReference? OtherPageReference { get; set; }
+
+    [Display(Name = "", Order = 210, GroupName = Globals.GroupNames.Testing)]
+    public virtual ContentArea? ContentAreaProperty { get; set; }
+
+    [Display(Name = "", Order = 220, GroupName = Globals.GroupNames.Testing)]
+    public virtual ContentReference? ContentReferenceProperty { get; set; }
+
+    [Display(Name = "", Order = 230, GroupName = Globals.GroupNames.Testing)]
+    public virtual IList<ContentReference>? ContentReferenceListProperty { get; set; }
 }
