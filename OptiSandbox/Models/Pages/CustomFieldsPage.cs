@@ -1,6 +1,8 @@
-﻿using EPiServer.SpecializedProperties;
+﻿using EPiServer.Shell.ObjectEditing;
+using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using System.ComponentModel.DataAnnotations;
+using OptiSandbox.Business.SelectionFactories;
 
 namespace OptiSandbox.Models.Pages;
 
@@ -53,4 +55,12 @@ public class CustomFieldsPage : SitePageData
 
     [Display(Name = "", Order = 230, GroupName = Globals.GroupNames.Testing)]
     public virtual IList<ContentReference>? ContentReferenceListProperty { get; set; }
+
+    [Display(Name = "", Order = 240, GroupName = Globals.GroupNames.Testing)]
+    [SelectOne(SelectionFactoryType = typeof(TestSelectionFactory))]
+    public virtual string? SingleValue { get; set; }
+
+    [Display(Name = "", Order = 250, GroupName = Globals.GroupNames.Testing)]
+    [SelectMany(SelectionFactoryType = typeof(TestSelectionFactory))]
+    public virtual IList<string>? MultipleValues { get; set; }
 }
