@@ -3,6 +3,7 @@ using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using System.ComponentModel.DataAnnotations;
 using OptiSandbox.Business.SelectionFactories;
+using OptiSandbox.Business.SelectionQueries;
 
 namespace OptiSandbox.Models.Pages;
 
@@ -63,4 +64,8 @@ public class CustomFieldsPage : SitePageData
     [Display(Name = "", Order = 250, GroupName = Globals.GroupNames.Testing)]
     [SelectMany(SelectionFactoryType = typeof(TestSelectionFactory))]
     public virtual IList<string>? MultipleValues { get; set; }
+
+    [Display(Name = "", Order = 260, GroupName = Globals.GroupNames.Testing)]
+    [AutoSuggestSelection(typeof(TestSelectionQuery), AllowCustomValues = true)]
+    public virtual string? TestSelectionProperty { get; set; }
 }
