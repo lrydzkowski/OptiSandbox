@@ -3,6 +3,7 @@ using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.Web.Routing;
 using OptiSandbox.Web.Core;
+using OptiSandbox.Web.Features.Articles;
 
 namespace OptiSandbox.Web;
 
@@ -33,7 +34,8 @@ public class Startup
             .AddFind()
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>()
-            .AddCoreModule();
+            .AddCoreModule()
+            .AddArticleModule();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

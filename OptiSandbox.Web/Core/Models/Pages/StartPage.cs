@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using OptiSandbox.Web.Features.Articles.Models;
 
 namespace OptiSandbox.Web.Core.Models.Pages;
 
@@ -8,4 +9,8 @@ public class StartPage : SitePageData
     [CultureSpecific]
     [Display(Name = "Main body", GroupName = SystemTabNames.Content, Order = 100)]
     public virtual XhtmlString? MainBody { get; set; }
+
+    [Display(Name = "Articles", GroupName = SystemTabNames.Content, Order = 200)]
+    [AllowedTypes(typeof(ArticlePage))]
+    public virtual ContentArea? Articles { get; set; }
 }

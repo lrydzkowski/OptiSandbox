@@ -1,0 +1,4 @@
+@model IPageViewModel<ArticlePage>
+
+@Html.PropertyFor(x => x.CurrentPage.Title)
+<p>@Model.CurrentPage.Created.ToString("yyyy-MM-dd HH:mm:ss")</p>
