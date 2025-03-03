@@ -1,8 +1,0 @@
-﻿@using EPiServer.ServiceLocation
-@model PageViewModel<StartPage>
-@{
-    var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
-}
-
-<h2>@Html.PropertyFor(x => x.CurrentPage.MainTitle)</h2>
-@Html.PropertyFor(x => x.CurrentPage.Banners)

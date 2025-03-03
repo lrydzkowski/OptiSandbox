@@ -396,6 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.idea
 
 /docker-compose.yml
-log.txt
+!*.tests.e2e
+
+# Verify
+*.received.*
