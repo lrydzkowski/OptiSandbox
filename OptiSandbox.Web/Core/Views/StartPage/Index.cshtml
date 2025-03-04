@@ -1,6 +1,9 @@
-@model IPageViewModel<StartPage>
+@model StartPageViewModel
 
 @Html.PropertyFor(x => x.CurrentPage.MainBody)
 
 <h2>Articles</h2>
-@Html.PropertyFor(x => x.CurrentPage.Articles)
+@foreach (Article article in Model.Articles)
+{
+    <p><a href="@article.Url">@article.Title - @article.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</a></p>
+}

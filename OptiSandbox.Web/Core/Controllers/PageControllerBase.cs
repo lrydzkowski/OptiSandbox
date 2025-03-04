@@ -14,7 +14,7 @@ public abstract class PageControllerBase<T> : PageController<T> where T : SitePa
         _loader = loader;
     }
 
-    protected IPageViewModel<TPage> CreatePageViewModel<TPage>(TPage currentPage) where TPage : SitePageData
+    protected virtual IPageViewModel<TPage> CreatePageViewModel<TPage>(TPage currentPage) where TPage : SitePageData
     {
         IPageViewModel<TPage> viewModel = new PageViewModel<TPage>(currentPage);
         viewModel.MenuPages = FilterForVisitor.Filter(
