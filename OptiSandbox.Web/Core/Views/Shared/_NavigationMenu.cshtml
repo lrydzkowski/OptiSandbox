@@ -1,0 +1,14 @@
+@model IPageViewModel<SitePageData>
+
+@if (Model.MenuPages.Count > 0)
+{
+    <ul>
+        <li>@Html.PageLink(ContentReference.StartPage)</li>
+        @foreach (SitePageData item in Model.MenuPages)
+        {
+            <li>
+                @Html.PageLink(item)
+            </li>
+        }
+    </ul>
+}

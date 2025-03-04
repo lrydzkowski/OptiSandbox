@@ -4,6 +4,8 @@ namespace OptiSandbox.Web.Core.Models.ViewModels;
 
 public interface IPageViewModel<out T> where T : SitePageData
 {
+    public IReadOnlyList<SitePageData> MenuPages { get; set; }
+
     T CurrentPage { get; }
 }
 
@@ -13,6 +15,8 @@ public class PageViewModel<T> : IPageViewModel<T> where T : SitePageData
     {
         CurrentPage = currentPage;
     }
+
+    public IReadOnlyList<SitePageData> MenuPages { get; set; } = [];
 
     public T CurrentPage { get; }
 }

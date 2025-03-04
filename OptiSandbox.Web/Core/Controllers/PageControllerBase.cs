@@ -1,3 +1,4 @@
+using EPiServer.Filters;
 using EPiServer.Web.Mvc;
 using OptiSandbox.Web.Core.Models.Pages;
 using OptiSandbox.Web.Core.Models.ViewModels;
@@ -16,6 +17,12 @@ public abstract class PageControllerBase<T> : PageController<T> where T : SitePa
     protected IPageViewModel<TPage> CreatePageViewModel<TPage>(TPage currentPage) where TPage : SitePageData
     {
         IPageViewModel<TPage> viewModel = new PageViewModel<TPage>(currentPage);
+        viewModel.MenuPages = FilterForVisitor.Filter(
+                _loader.GetChildren<SitePageData>(ContentReference.StartPage)
+            )
+            .Cast<SitePageData>()
+            .Where(page => page.VisibleInMenu)
+            .ToList();
 
         return viewModel;
     }
