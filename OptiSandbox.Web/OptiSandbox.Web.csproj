@@ -28,4 +28,9 @@
   <ItemGroup>
     <Folder Include="App_Data\"/>
   </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Content\Views\ArticlePage\Index.cshtml"/>
+    <AdditionalFiles Include="Content\Views\Shared\Components\ArticlePage\Default.cshtml"/>
+  </ItemGroup>
 </Project>
