@@ -1,16 +1,33 @@
-@model IPageViewModel<SitePageData>
+@model IPageViewModel<ICurrentPageViewModel<SitePageData>>
 
 <!DOCTYPE html>
-<html lang="@Model.CurrentPage.Language">
+<html lang="@Model.CurrentPageViewModel.CurrentPage.Language">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@(Model.CurrentPage.Name)</title>
+    <title>@(Model.CurrentPageViewModel.CurrentPage.Name)</title>
+    <link href="~/bootstrap.min.css" rel="stylesheet"/>
+    <link href="~/styles.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>OptiSandbox</h1>
-@await Html.PartialAsync("_NavigationMenu")
-@RenderBody()
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">@Html.PropertyFor(x => x.StartPage.PageTitle)</a>
+            @await Html.PartialAsync("_NavigationMenu")
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+</div>
+<footer class="text-center">
+    <div class="container">
+        <p>@Html.PropertyFor(x => x.StartPage.FooterText)</p>
+    </div>
+</footer>
+
+<script src="~/bootstrap.bundle.min.js"></script>
 </body>
 </html>

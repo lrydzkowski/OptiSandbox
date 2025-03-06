@@ -1,14 +1,27 @@
-@model IPageViewModel<SitePageData>
+@model IPageViewModel<ICurrentPageViewModel<SitePageData>>
 
 @if (Model.MenuPages.Count > 0)
 {
-    <ul>
-        <li>@Html.PageLink(ContentReference.StartPage)</li>
-        @foreach (SitePageData item in Model.MenuPages)
-        {
-            <li>
-                @Html.PageLink(item)
-            </li>
-        }
-    </ul>
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            @foreach (MenuPage menuPage in Model.MenuPages)
+            {
+                <li class="nav-item">
+                    <a class="nav-link @(menuPage.IsSelected ? "active" : "")"
+                       href="@Url.ContentUrl(menuPage.PageReference)">@Html.PropertyFor(_ => menuPage.Label)</a>
+                </li>
+            }
+        </ul>
+    </div>
 }

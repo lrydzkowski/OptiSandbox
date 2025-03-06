@@ -1,9 +1,31 @@
-@model StartPageViewModel
+@model IPageViewModel<StartPageViewModel>
 
-@Html.PropertyFor(x => x.CurrentPage.MainBody)
+<header class="text-center mb-5">
+    <h1 class="display-4">@Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Title)</h1>
+    <p class="lead">@Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Subtitle)</p>
+</header>
 
-<h2>Articles</h2>
-@foreach (Article article in Model.Articles)
-{
-    <p><a href="@article.Url">@article.Title - @article.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</a></p>
-}
+<div class="row article-list">
+    @foreach (Article article in Model.CurrentPageViewModel.Articles)
+    {
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <a href="@article.Url">
+                        <h2 class="card-title">@article.Title</h2>
+                        <p class="article-date">@article.CreatedAt.ToString("yyyy-MM-dd")</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+</div>

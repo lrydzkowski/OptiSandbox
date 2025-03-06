@@ -1,71 +1,26 @@
-using System.Globalization;
-using EPiServer.Filters;
-using EPiServer.Find;
-using EPiServer.Find.Cms;
-using EPiServer.Find.Framework;
-using EPiServer.Web.Routing;
+using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using OptiSandbox.Web.Content.Models.Pages;
-using OptiSandbox.Web.Content.Models.ViewModels;
+using OptiSandbox.Web.Content.Services;
 
 namespace OptiSandbox.Web.Content.Controllers;
 
-public class StartPageController : PageControllerBase<StartPage>
+public class StartPageController : PageController<StartPage>
 {
-    private readonly IUrlResolver _urlResolver;
+    private readonly IPageViewModelBuilder _pageViewModelBuilder;
+    private readonly IStartPageViewModelBuilder _startPageViewModelBuilder;
 
-    public StartPageController(IContentLoader loader, IUrlResolver urlResolver) : base(loader)
+    public StartPageController(
+        IPageViewModelBuilder pageViewModelBuilder,
+        IStartPageViewModelBuilder startPageViewModelBuilder
+    )
     {
-        _urlResolver = urlResolver;
+        _pageViewModelBuilder = pageViewModelBuilder;
+        _startPageViewModelBuilder = startPageViewModelBuilder;
     }
 
     public ActionResult Index(StartPage currentPage, int page = 1)
     {
-        return View(CreatePageViewModel(currentPage, page));
-    }
-
-    private StartPageViewModel CreatePageViewModel(StartPage currentPage, int page = 1)
-    {
-        StartPageViewModel viewModel = new(currentPage)
-        {
-            MenuPages = GetMenuPages(),
-            Articles = GetArticles(page)
-        };
-
-        return viewModel;
-    }
-
-    private List<SitePageData> GetMenuPages()
-    {
-        return FilterForVisitor.Filter(
-                _loader.GetChildren<SitePageData>(ContentReference.StartPage)
-            )
-            .Cast<SitePageData>()
-            .Where(page => page.VisibleInMenu)
-            .ToList();
-    }
-
-    private List<Article> GetArticles(int page = 1, int pageSize = 2)
-    {
-        ITypeSearch<ArticlePage> query = SearchClient.Instance
-            .Search<ArticlePage>()
-            .FilterForVisitor()
-            .FilterOnCurrentSite()
-            .FilterOnLanguages([CultureInfo.CurrentCulture.Name])
-            .Skip((page - 1) * pageSize)
-            .Take(10);
-
-        IContentResult<SitePageData> results = query.GetContentResult();
-        List<Article> articles = results.Select(
-                result => new Article
-                {
-                    Title = result.Name,
-                    CreatedAt = new DateTimeOffset(result.Created),
-                    Url = _urlResolver.GetUrl(result.ContentLink)
-                }
-            )
-            .ToList();
-
-        return articles;
+        return View(_pageViewModelBuilder.BuildPageViewModel(_startPageViewModelBuilder.Build(currentPage, page)));
     }
 }

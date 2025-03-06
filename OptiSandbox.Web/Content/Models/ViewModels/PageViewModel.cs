@@ -2,21 +2,34 @@ using OptiSandbox.Web.Content.Models.Pages;
 
 namespace OptiSandbox.Web.Content.Models.ViewModels;
 
-public interface IPageViewModel<out T> where T : SitePageData
+public interface IPageViewModel<out T> where T : ICurrentPageViewModel<SitePageData>
 {
-    public IReadOnlyList<SitePageData> MenuPages { get; set; }
+    public IReadOnlyList<MenuPage> MenuPages { get; set; }
 
-    T CurrentPage { get; }
+    T CurrentPageViewModel { get; }
+
+    StartPage StartPage { get; set; }
 }
 
-public class PageViewModel<T> : IPageViewModel<T> where T : SitePageData
+public class PageViewModel<T> : IPageViewModel<T> where T : ICurrentPageViewModel<SitePageData>
 {
     public PageViewModel(T currentPage)
     {
-        CurrentPage = currentPage;
+        CurrentPageViewModel = currentPage;
     }
 
-    public IReadOnlyList<SitePageData> MenuPages { get; set; } = [];
+    public IReadOnlyList<MenuPage> MenuPages { get; set; } = [];
 
-    public T CurrentPage { get; }
+    public T CurrentPageViewModel { get; }
+
+    public required StartPage StartPage { get; set; }
+}
+
+public class MenuPage
+{
+    public string Label { get; set; } = "";
+
+    public PageReference? PageReference { get; set; }
+
+    public bool IsSelected { get; set; }
 }

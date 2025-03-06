@@ -2,13 +2,16 @@ using OptiSandbox.Web.Content.Models.Pages;
 
 namespace OptiSandbox.Web.Content.Models.ViewModels;
 
-public class StartPageViewModel : PageViewModel<StartPage>
+public class StartPageViewModel : ICurrentPageViewModel<StartPage>
 {
-    public StartPageViewModel(StartPage currentPage) : base(currentPage)
+    public StartPageViewModel(StartPage currentPage)
     {
+        CurrentPage = currentPage;
     }
 
     public IReadOnlyList<Article> Articles { get; set; } = [];
+
+    public StartPage CurrentPage { get; }
 }
 
 public class Article

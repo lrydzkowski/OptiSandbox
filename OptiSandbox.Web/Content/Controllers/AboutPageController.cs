@@ -3,18 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 using OptiSandbox.Web.Content.Models.Pages;
 using OptiSandbox.Web.Content.Services;
 
-namespace OptiSandbox.Web.Content.Components;
+namespace OptiSandbox.Web.Content.Controllers;
 
-public class ArticlePagePartialComponent : PartialContentComponent<ArticlePage>
+public class AboutPageController : PageController<AboutPage>
 {
     private readonly IPageViewModelBuilder _pageViewModelBuilder;
 
-    public ArticlePagePartialComponent(IPageViewModelBuilder pageViewModelBuilder)
+    public AboutPageController(IPageViewModelBuilder pageViewModelBuilder)
     {
         _pageViewModelBuilder = pageViewModelBuilder;
     }
 
-    protected override IViewComponentResult InvokeComponent(ArticlePage currentPage)
+    public ActionResult Index(AboutPage currentPage)
     {
         return View(_pageViewModelBuilder.Build(currentPage));
     }

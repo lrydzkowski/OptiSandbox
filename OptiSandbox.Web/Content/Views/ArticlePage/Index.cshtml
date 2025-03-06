@@ -1,5 +1,18 @@
-@model IPageViewModel<ArticlePage>
+@model IPageViewModel<ICurrentPageViewModel<ArticlePage>>
 
-@Html.PropertyFor(x => x.CurrentPage.Title)
-<p>@Model.CurrentPage.Created.ToString("yyyy-MM-dd HH:mm:ss")</p>
-@Html.PropertyFor(x => x.CurrentPage.Content)
+<div class="article-container">
+    <article>
+        <header>
+            <h1 class="display-4">@Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Title)</h1>
+            <div class="article-meta">
+                <span>Published: @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.PublishedAt)</span>
+                |
+                <span>Author: @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Author)</span>
+            </div>
+        </header>
+
+        <div class="article-content">
+            @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Content)
+        </div>
+    </article>
+</div>
