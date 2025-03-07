@@ -6,14 +6,19 @@ namespace OptiSandbox.Web.Content.Models.Pages;
 public class ArticlePage : SitePageData
 {
     [Display(Name = "Title", Order = 100)]
+    [CultureSpecific]
     public virtual string? Title { get; set; }
 
-    [Display(Name = "Publish at", Order = 200)]
+    [Display(Name = "Published at", Order = 200)]
+    [CultureSpecific]
+    [UIHint(SiteUiHints.DateOnly)]
     public virtual DateTime? PublishedAt { get; set; }
 
     [Display(Name = "Author", Order = 300)]
+    [CultureSpecific]
     public virtual string? Author { get; set; }
 
     [Display(Name = "Content", Order = 400)]
+    [CultureSpecific]
     public virtual XhtmlString? Content { get; set; }
 }

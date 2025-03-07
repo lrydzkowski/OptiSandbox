@@ -14,17 +14,30 @@
 <div class="content-wrapper">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="/">@Html.PropertyFor(x => x.StartPage.PageTitle)</a>
+            <a class="navbar-brand" href="/">@Html.PropertyFor(viewModel => viewModel.StartPage.PageTitle)</a>
             @await Html.PartialAsync("_NavigationMenu")
         </div>
     </nav>
+    @if (Model.CurrentPageViewModel.CurrentPage.EnableBreadcrumbs)
+    {
+        <div class="container breadcrumb-container">
+            <ol class="breadcrumb">
+                @for (int index = 0; index < Model.Ancestors.Count; index++)
+                {
+                    <li class="breadcrumb-item @(index == Model.Ancestors.Count - 1 ? "active" : "")">
+                        @Html.ContentLink(Model.Ancestors[index])
+                    </li>
+                }
+            </ol>
+        </div>
+    }
     <div class="container">
         @RenderBody()
     </div>
 </div>
 <footer class="text-center">
     <div class="container">
-        <p>@Html.PropertyFor(x => x.StartPage.FooterText)</p>
+        <p>@Html.PropertyFor(viewModel => viewModel.StartPage.FooterText)</p>
     </div>
 </footer>
 

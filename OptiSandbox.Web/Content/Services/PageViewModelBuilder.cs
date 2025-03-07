@@ -34,7 +34,8 @@ public class PageViewModelBuilder
         IPageViewModel<T> viewModel = new PageViewModel<T>(pageViewModel)
         {
             StartPage = startPage,
-            MenuPages = GetMainMenuPages(startPage)
+            MenuPages = GetMainMenuPages(startPage),
+            Ancestors = GetAncestors()
         };
 
         return viewModel;
@@ -79,5 +80,23 @@ public class PageViewModelBuilder
         );
 
         return menuPages;
+    }
+
+    private List<ContentReference> GetAncestors()
+    {
+        ContentReference? currentPageContentLink = _httpContextAccessor.HttpContext.GetContentLink();
+        if (ContentReference.IsNullOrEmpty(currentPageContentLink))
+        {
+            return [];
+        }
+
+        List<ContentReference> ancestors = _contentLoader.GetAncestors(currentPageContentLink)
+            .Select(ancestor => ancestor.ContentLink)
+            .Reverse()
+            .Skip(1)
+            .ToList();
+        ancestors.Add(currentPageContentLink);
+
+        return ancestors;
     }
 }

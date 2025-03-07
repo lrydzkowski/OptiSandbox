@@ -9,7 +9,9 @@ public class StartPageViewModel : ICurrentPageViewModel<StartPage>
         CurrentPage = currentPage;
     }
 
-    public IReadOnlyList<Article> Articles { get; set; } = [];
+    public PaginatedList<ArticlePage> Articles { get; set; } = new();
+
+    public int ArticlesCurrentPageIndex { get; set; } = 1;
 
     public StartPage CurrentPage { get; }
 }

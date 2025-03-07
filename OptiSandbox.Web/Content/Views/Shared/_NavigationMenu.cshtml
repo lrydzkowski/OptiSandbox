@@ -18,8 +18,7 @@
             @foreach (MenuPage menuPage in Model.MenuPages)
             {
                 <li class="nav-item">
-                    <a class="nav-link @(menuPage.IsSelected ? "active" : "")"
-                       href="@Url.ContentUrl(menuPage.PageReference)">@Html.PropertyFor(_ => menuPage.Label)</a>
+                    @Html.PageLink(menuPage.Label, menuPage.PageReference, null, new { @class = "nav-link" + (menuPage.IsSelected ? " active" : null) })
                 </li>
             }
         </ul>

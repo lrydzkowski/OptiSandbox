@@ -2,7 +2,7 @@ using System.Globalization;
 using EPiServer.Find;
 using EPiServer.Find.Cms;
 using EPiServer.Find.Framework;
-using EPiServer.Web.Routing;
+using OptiSandbox.Web.Content.Models;
 using OptiSandbox.Web.Content.Models.Pages;
 using OptiSandbox.Web.Content.Models.ViewModels;
 
@@ -16,44 +16,36 @@ public interface IStartPageViewModelBuilder
 public class StartPageViewModelBuilder
     : IStartPageViewModelBuilder
 {
-    private readonly IUrlResolver _urlResolver;
-
-    public StartPageViewModelBuilder(IUrlResolver urlResolver)
-    {
-        _urlResolver = urlResolver;
-    }
-
     public StartPageViewModel Build(StartPage currentPage, int page = 1)
     {
         StartPageViewModel viewModel = new(currentPage)
         {
-            Articles = GetArticles(page)
+            Articles = GetArticles(page),
+            ArticlesCurrentPageIndex = page
         };
 
         return viewModel;
     }
 
-    private List<Article> GetArticles(int page = 1, int pageSize = 2)
+    private PaginatedList<ArticlePage> GetArticles(int page = 1, int pageSize = 3)
     {
         ITypeSearch<ArticlePage> query = SearchClient.Instance
             .Search<ArticlePage>()
             .FilterForVisitor()
             .FilterOnCurrentSite()
-            .FilterOnLanguages([CultureInfo.CurrentCulture.Name])
-            .Skip((page - 1) * pageSize)
-            .Take(10);
+            .FilterOnLanguages([CultureInfo.CurrentCulture.Name]);
+        ITypeSearch<ArticlePage> paginatedQuery = query.Skip((page - 1) * pageSize)
+            .Take(pageSize);
+        IContentResult<ArticlePage> results = paginatedQuery.GetContentResult();
+        int count = query.Count();
 
-        IContentResult<SitePageData> results = query.GetContentResult();
-        List<Article> articles = results.Select(
-                result => new Article
-                {
-                    Title = result.Name,
-                    CreatedAt = new DateTimeOffset(result.Created),
-                    Url = _urlResolver.GetUrl(result.ContentLink)
-                }
-            )
-            .ToList();
+        PaginatedList<ArticlePage> paginatedList = new()
+        {
+            Data = results.ToList(),
+            Count = count,
+            PageSize = pageSize
+        };
 
-        return articles;
+        return paginatedList;
     }
 }

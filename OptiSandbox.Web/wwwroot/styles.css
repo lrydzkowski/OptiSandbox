@@ -19,9 +19,6 @@ body {
 
 .content-wrapper {
     flex: 1 0 auto;
-}
-
-.content-wrapper > .container {
     padding-bottom: 1rem;
 }
 
@@ -90,4 +87,24 @@ footer p {
 
 .page-link {
     color: #000;
+}
+
+.breadcrumb {
+    padding: 0;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+}
+
+.breadcrumb a {
+    color: #333;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
 }

@@ -9,6 +9,8 @@ public interface IPageViewModel<out T> where T : ICurrentPageViewModel<SitePageD
     T CurrentPageViewModel { get; }
 
     StartPage StartPage { get; set; }
+
+    List<ContentReference> Ancestors { get; set; }
 }
 
 public class PageViewModel<T> : IPageViewModel<T> where T : ICurrentPageViewModel<SitePageData>
@@ -23,6 +25,8 @@ public class PageViewModel<T> : IPageViewModel<T> where T : ICurrentPageViewMode
     public T CurrentPageViewModel { get; }
 
     public required StartPage StartPage { get; set; }
+
+    public List<ContentReference> Ancestors { get; set; } = [];
 }
 
 public class MenuPage

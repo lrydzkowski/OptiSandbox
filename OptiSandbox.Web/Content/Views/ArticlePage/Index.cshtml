@@ -5,7 +5,7 @@
         <header>
             <h1 class="display-4">@Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Title)</h1>
             <div class="article-meta">
-                <span>Published: @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.PublishedAt)</span>
+                <span>Published: @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.PublishedAt, TemplateNames.OnlyDate)</span>
                 |
                 <span>Author: @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Author)</span>
             </div>
