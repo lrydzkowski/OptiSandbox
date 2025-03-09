@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OptiSandbox - Your Basket</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link href="./styles/styles.css" rel="stylesheet" />
+        <link href="./styles/e-commerce.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="content-wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">OptiSandbox</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link active"
+                                    aria-current="page"
+                                    href="index.html"
+                                    >Home</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html"
+                                    >About Me</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html"
+                                    >Shop</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login-register.html"
+                                    >Sign In</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <div
+                                    class="cart-icon-wrapper nav-link"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#basketOffcanvas"
+                                    aria-controls="basketOffcanvas"
+                                >
+                                    <span class="cart-icon">🛒</span>
+                                    <span class="cart-count">2</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container breadcrumb-container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Basket
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Main content -->
+            <div class="container">
+                <header class="text-center mb-5">
+                    <h1 class="display-4">Your Basket</h1>
+                    <p class="lead">Review your items before checkout</p>
+                </header>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Cart Items -->
+                        <div class="cart-items mb-4">
+                            <!-- Item 1 -->
+                            <div class="card cart-item mb-3">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-2 col-3">
+                                            <img
+                                                src="./images/placeholder-basket.webp"
+                                                class="img-fluid rounded cart-item-img"
+                                                alt="Modern Web Development"
+                                            />
+                                        </div>
+                                        <div class="col-md-4 col-9">
+                                            <h5 class="cart-item-title">
+                                                Modern Web Development
+                                            </h5>
+                                            <p class="cart-item-category mb-0">
+                                                E-books
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="col-md-2 col-4 mt-3 mt-md-0"
+                                        >
+                                            <div class="quantity-selector-sm">
+                                                <button
+                                                    class="btn btn-sm btn-outline-secondary qty-btn"
+                                                >
+                                                    -
+                                                </button>
+                                                <input
+                                                    type="text"
+                                                    inputmode="numeric"
+                                                    class="form-control form-control-sm qty-input"
+                                                    value="1"
+                                                    min="1"
+                                                    max="10"
+                                                />
+                                                <button
+                                                    class="btn btn-sm btn-outline-secondary qty-btn"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-md-2 col-4 mt-3 mt-md-0 text-md-end"
+                                        >
+                                            <span class="cart-item-price"
+                                                >$24.99</span
+                                            >
+                                        </div>
+                                        <div
+                                            class="col-md-2 col-4 mt-3 mt-md-0 text-end"
+                                        >
+                                            <button
+                                                class="btn btn-sm btn-outline-danger remove-item"
+                                            >
+                                                Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="card cart-item mb-3">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-2 col-3">
+                                            <img
+                                                src="./images/placeholder-basket.webp"
+                                                class="img-fluid rounded cart-item-img"
+                                                alt="React Masterclass"
+                                            />
+                                        </div>
+                                        <div class="col-md-4 col-9">
+                                            <h5 class="cart-item-title">
+                                                React Masterclass
+                                            </h5>
+                                            <p class="cart-item-category mb-0">
+                                                Courses
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="col-md-2 col-4 mt-3 mt-md-0"
+                                        >
+                                            <div class="quantity-selector-sm">
+                                                <button
+                                                    class="btn btn-sm btn-outline-secondary qty-btn"
+                                                >
+                                                    -
+                                                </button>
+                                                <input
+                                                    type="text"
+                                                    inputmode="numeric"
+                                                    class="form-control form-control-sm qty-input"
+                                                    value="1"
+                                                    min="1"
+                                                    max="10"
+                                                />
+                                                <button
+                                                    class="btn btn-sm btn-outline-secondary qty-btn"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-md-2 col-4 mt-3 mt-md-0 text-md-end"
+                                        >
+                                            <span class="cart-item-price"
+                                                >$89.99</span
+                                            >
+                                        </div>
+                                        <div
+                                            class="col-md-2 col-4 mt-3 mt-md-0 text-end"
+                                        >
+                                            <button
+                                                class="btn btn-sm btn-outline-danger remove-item"
+                                            >
+                                                Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Empty Cart Message (hidden by default) -->
+                        <div class="empty-cart-message d-none text-center py-5">
+                            <div class="mb-3">
+                                <span style="font-size: 3rem">🛒</span>
+                            </div>
+                            <h3>Your basket is empty</h3>
+                            <p class="text-muted mb-4">
+                                Looks like you haven't added any products to
+                                your basket yet.
+                            </p>
+                            <a href="products.html" class="btn btn-primary"
+                                >Continue Shopping</a
+                            >
+                        </div>
+
+                        <!-- Cart Actions -->
+                        <div
+                            class="cart-actions d-flex justify-content-between mb-5"
+                        >
+                            <a
+                                href="products.html"
+                                class="btn btn-outline-primary"
+                                >Continue Shopping</a
+                            >
+                            <button class="btn btn-outline-secondary">
+                                Update Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="col-lg-4">
+                        <div class="card order-summary">
+                            <div class="card-header">
+                                <h5 class="mb-0">Order Summary</h5>
+                            </div>
+                            <div class="card-body">
+                                <div
+                                    class="d-flex justify-content-between mb-2"
+                                >
+                                    <span>Subtotal</span>
+                                    <span>$114.98</span>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-between mb-2"
+                                >
+                                    <span>Shipping</span>
+                                    <span>$0.00</span>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-between mb-3"
+                                >
+                                    <span>Tax</span>
+                                    <span>$6.90</span>
+                                </div>
+
+                                <hr />
+
+                                <div
+                                    class="d-flex justify-content-between mb-4"
+                                >
+                                    <strong>Total</strong>
+                                    <strong>$121.88</strong>
+                                </div>
+
+                                <!-- Coupon Code -->
+                                <div class="coupon-form mb-4">
+                                    <label for="couponCode" class="form-label"
+                                        >Have a coupon?</label
+                                    >
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="couponCode"
+                                            placeholder="Enter code"
+                                        />
+                                        <button
+                                            class="btn btn-outline-secondary"
+                                            type="button"
+                                        >
+                                            Apply
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <a
+                                    href="checkout-shipping.html"
+                                    class="btn btn-primary w-100"
+                                    >Proceed to Checkout</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="container">
+                <p>&copy; 2025 OptiSandbox. Built with Optimizely CMS.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+

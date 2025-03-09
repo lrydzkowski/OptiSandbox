@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OptiSandbox - Sign In</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link href="./styles/styles.css" rel="stylesheet" />
+        <link href="./styles/e-commerce.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="content-wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">OptiSandbox</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link active"
+                                    aria-current="page"
+                                    href="index.html"
+                                    >Home</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html"
+                                    >About Me</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html"
+                                    >Shop</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login-register.html"
+                                    >Sign In</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <div
+                                    class="cart-icon-wrapper nav-link"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#basketOffcanvas"
+                                    aria-controls="basketOffcanvas"
+                                >
+                                    <span class="cart-icon">🛒</span>
+                                    <span class="cart-count">2</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container breadcrumb-container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Sign In
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Main content -->
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="auth-container">
+                            <div class="row g-0">
+                                <!-- Login Form -->
+                                <div class="col-md-6">
+                                    <div class="auth-form login-form h-100">
+                                        <div class="card h-100">
+                                            <div
+                                                class="card-body d-flex flex-column"
+                                            >
+                                                <h2
+                                                    class="card-title text-center mb-4"
+                                                >
+                                                    Sign In
+                                                </h2>
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="loginEmail"
+                                                            class="form-label"
+                                                            >Email
+                                                            Address</label
+                                                        >
+                                                        <input
+                                                            type="email"
+                                                            class="form-control"
+                                                            id="loginEmail"
+                                                            required
+                                                        />
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="loginPassword"
+                                                            class="form-label"
+                                                            >Password</label
+                                                        >
+                                                        <input
+                                                            type="password"
+                                                            class="form-control"
+                                                            id="loginPassword"
+                                                            required
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="mb-3 form-check"
+                                                    >
+                                                        <input
+                                                            type="checkbox"
+                                                            class="form-check-input"
+                                                            id="rememberMe"
+                                                        />
+                                                        <label
+                                                            class="form-check-label"
+                                                            for="rememberMe"
+                                                            >Remember me</label
+                                                        >
+                                                    </div>
+                                                    <div class="d-grid mb-3">
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-primary"
+                                                        >
+                                                            Sign In
+                                                        </button>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <a
+                                                            href="#"
+                                                            class="text-decoration-none"
+                                                            >Forgot your
+                                                            password?</a
+                                                        >
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Register Form -->
+                                <div class="col-md-6">
+                                    <div class="auth-form register-form h-100">
+                                        <div class="card h-100">
+                                            <div
+                                                class="card-body d-flex flex-column"
+                                            >
+                                                <h2
+                                                    class="card-title text-center mb-4"
+                                                >
+                                                    Create Account
+                                                </h2>
+                                                <form>
+                                                    <div class="row">
+                                                        <div
+                                                            class="col-md-6 mb-3"
+                                                        >
+                                                            <label
+                                                                for="firstName"
+                                                                class="form-label"
+                                                                >First
+                                                                Name</label
+                                                            >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="firstName"
+                                                                required
+                                                            />
+                                                        </div>
+                                                        <div
+                                                            class="col-md-6 mb-3"
+                                                        >
+                                                            <label
+                                                                for="lastName"
+                                                                class="form-label"
+                                                                >Last
+                                                                Name</label
+                                                            >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="lastName"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="registerEmail"
+                                                            class="form-label"
+                                                            >Email
+                                                            Address</label
+                                                        >
+                                                        <input
+                                                            type="email"
+                                                            class="form-control"
+                                                            id="registerEmail"
+                                                            required
+                                                        />
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="registerPassword"
+                                                            class="form-label"
+                                                            >Password</label
+                                                        >
+                                                        <input
+                                                            type="password"
+                                                            class="form-control"
+                                                            id="registerPassword"
+                                                            required
+                                                        />
+                                                        <div class="form-text">
+                                                            Password must be at
+                                                            least 8 characters,
+                                                            including one letter
+                                                            and one number.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="confirmPassword"
+                                                            class="form-label"
+                                                            >Confirm
+                                                            Password</label
+                                                        >
+                                                        <input
+                                                            type="password"
+                                                            class="form-control"
+                                                            id="confirmPassword"
+                                                            required
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="mb-3 form-check"
+                                                    >
+                                                        <input
+                                                            type="checkbox"
+                                                            class="form-check-input"
+                                                            id="termsAgree"
+                                                            required
+                                                        />
+                                                        <label
+                                                            class="form-check-label"
+                                                            for="termsAgree"
+                                                        >
+                                                            I agree to the
+                                                            <a href="#"
+                                                                >Terms of
+                                                                Service</a
+                                                            >
+                                                            and
+                                                            <a href="#"
+                                                                >Privacy
+                                                                Policy</a
+                                                            >
+                                                        </label>
+                                                    </div>
+                                                    <div class="d-grid mb-3">
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-primary"
+                                                        >
+                                                            Create Account
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="container">
+                <p>&copy; 2025 OptiSandbox. Built with Optimizely CMS.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script>
+            // Toggle between login and register forms on mobile
+            document.addEventListener("DOMContentLoaded", function () {
+                const toggleLinks =
+                    document.querySelectorAll(".toggle-auth-form");
+                const loginForm = document.querySelector(".login-form");
+                const registerForm = document.querySelector(".register-form");
+
+                toggleLinks.forEach((link) => {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        if (window.innerWidth < 768) {
+                            // Only on mobile
+                            if (loginForm.classList.contains("d-none")) {
+                                loginForm.classList.remove("d-none");
+                                registerForm.classList.add("d-none");
+                            } else {
+                                loginForm.classList.add("d-none");
+                                registerForm.classList.remove("d-none");
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
+
