@@ -1,5 +1,6 @@
 using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
+using EPiServer.Commerce.FindSearchProvider;
 using EPiServer.Scheduler;
 using EPiServer.Web.Routing;
 using Mediachase.Commerce.Anonymous;
@@ -32,6 +33,7 @@ public class Startup
             .AddCmsAspNetIdentity<ApplicationUser>()
             .AddCommerce()
             .AddFind()
+            .AddFindSearchProvider()
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>()
             .AddContentModule();
