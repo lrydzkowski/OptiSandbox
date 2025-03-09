@@ -2,6 +2,7 @@ using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.Web.Routing;
+using Mediachase.Commerce.Anonymous;
 using OptiSandbox.Web.Content;
 
 namespace OptiSandbox.Web;
@@ -29,7 +30,7 @@ public class Startup
 
         services
             .AddCmsAspNetIdentity<ApplicationUser>()
-            .AddCms()
+            .AddCommerce()
             .AddFind()
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>()
@@ -42,6 +43,8 @@ public class Startup
         {
             app.UseDeveloperExceptionPage();
         }
+
+        app.UseAnonymousId();
 
         app.UseStaticFiles();
         app.UseRouting();

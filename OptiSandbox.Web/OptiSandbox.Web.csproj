@@ -14,8 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="12.29.0"/>
+    <PackageReference Include="EPiServer.CMS" Version="12.32.4"/>
+    <PackageReference Include="EPiServer.Commerce" Version="14.35.0"/>
+    <PackageReference Include="EPiServer.Commerce.FindSearchProvider" Version="12.2.1"/>
     <PackageReference Include="EPiServer.Find.Cms" Version="16.4.0"/>
+    <PackageReference Include="EPiServer.Find.Commerce" Version="12.2.1"/>
     <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.4.1"/>
     <PackageReference Include="JetBrains.Annotations" Version="2024.3.0"/>
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0"/>

@@ -8,13 +8,14 @@ A sandbox for different experiments with:
 
 ## How to Run It
 
-1. Create an empty SQL Server database.
+1. Create two empty SQL Server databases, one for CMS (EPiServerDB), and one for Commerce (EcfSqlConnection).
 2. Add database connection string to `secrets.json`:
 
     ```json
     {
       "ConnectionStrings": {
-        "EPiServerDB": "Server=192.168.50.50,49743;Database=OptiSandboxCms;User Id=OptiSandboxUser;Password=g23g4gv$RWEGXbxc_3;TrustServerCertificate=True;"
+        "EPiServerDB": "Server=192.168.50.50,49743;Database=OptiSandboxCms;User Id=OptiSandboxUser;Password=123;TrustServerCertificate=True;",
+        "EcfSqlConnection": "Server=192.168.50.50,49743;Database=OptiSandboxCommerce;User Id=OptiSandboxUser;Password=123;TrustServerCertificate=True;"
       }
     }
     ```
