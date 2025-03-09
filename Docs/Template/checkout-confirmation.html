@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OptiSandbox - Order Confirmation</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link href="./styles/styles.css" rel="stylesheet" />
+        <link href="./styles/e-commerce.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="content-wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">OptiSandbox</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link active"
+                                    aria-current="page"
+                                    href="index.html"
+                                    >Home</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html"
+                                    >About Me</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html"
+                                    >Shop</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login-register.html"
+                                    >Sign In</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <div
+                                    class="cart-icon-wrapper nav-link"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#basketOffcanvas"
+                                    aria-controls="basketOffcanvas"
+                                >
+                                    <span class="cart-icon">🛒</span>
+                                    <span class="cart-count">2</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container breadcrumb-container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="basket.html">Basket</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="checkout-shipping.html">Shipping</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="payment.html">Payment</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Confirmation
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Main content -->
+            <div class="container">
+                <!-- Checkout Steps -->
+                <div class="checkout-steps mb-4">
+                    <div class="step completed">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Shipping</div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step completed">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Payment</div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step active">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Confirmation</div>
+                    </div>
+                </div>
+
+                <div class="order-confirmation">
+                    <!-- Confirmation Header -->
+                    <div class="text-center mb-5">
+                        <div class="confirmation-icon mb-4">
+                            <span>✓</span>
+                        </div>
+                        <h1 class="display-4">Thank You for Your Order!</h1>
+                        <p class="lead">
+                            Your order has been received and is being processed.
+                        </p>
+                    </div>
+
+                    <!-- Order Details -->
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="card order-details-card mb-4">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Order Details</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <div class="order-info-block">
+                                                <h6>Order Number</h6>
+                                                <p class="mb-0">#ORD12567</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="order-info-block">
+                                                <h6>Order Date</h6>
+                                                <p class="mb-0">
+                                                    March 8, 2025
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <div class="order-info-block">
+                                                <h6>Shipping Address</h6>
+                                                <p class="mb-0">
+                                                    John Doe<br />
+                                                    123 Main Street<br />
+                                                    Apt 4B<br />
+                                                    New York, NY 10001<br />
+                                                    United States
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="order-info-block">
+                                                <h6>Payment Method</h6>
+                                                <p class="mb-0">
+                                                    Credit Card (ends with 4242)
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="order-summary">
+                                        <h6>Order Summary</h6>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Product</th>
+                                                        <th class="text-center">
+                                                            Quantity
+                                                        </th>
+                                                        <th class="text-end">
+                                                            Price
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div
+                                                                class="d-flex align-items-center"
+                                                            >
+                                                                <img
+                                                                    src="./images/placeholder-checkout.webp"
+                                                                    class="img-fluid rounded me-2"
+                                                                    alt="Modern Web Development"
+                                                                />
+                                                                <div>
+                                                                    <h6
+                                                                        class="mb-0"
+                                                                    >
+                                                                        Modern
+                                                                        Web
+                                                                        Development
+                                                                    </h6>
+                                                                    <small
+                                                                        class="text-muted"
+                                                                        >E-books</small
+                                                                    >
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            1
+                                                        </td>
+                                                        <td class="text-end">
+                                                            $24.99
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div
+                                                                class="d-flex align-items-center"
+                                                            >
+                                                                <img
+                                                                    src="./images/placeholder-checkout.webp"
+                                                                    class="img-fluid rounded me-2"
+                                                                    alt="React Masterclass"
+                                                                />
+                                                                <div>
+                                                                    <h6
+                                                                        class="mb-0"
+                                                                    >
+                                                                        React
+                                                                        Masterclass
+                                                                    </h6>
+                                                                    <small
+                                                                        class="text-muted"
+                                                                        >Courses</small
+                                                                    >
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            1
+                                                        </td>
+                                                        <td class="text-end">
+                                                            $89.99
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            colspan="2"
+                                                            class="text-end"
+                                                        >
+                                                            Subtotal
+                                                        </td>
+                                                        <td class="text-end">
+                                                            $114.98
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            colspan="2"
+                                                            class="text-end"
+                                                        >
+                                                            Shipping
+                                                        </td>
+                                                        <td class="text-end">
+                                                            $0.00
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            colspan="2"
+                                                            class="text-end"
+                                                        >
+                                                            Tax
+                                                        </td>
+                                                        <td class="text-end">
+                                                            $6.90
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            colspan="2"
+                                                            class="text-end border-0"
+                                                        >
+                                                            <strong
+                                                                >Total</strong
+                                                            >
+                                                        </td>
+                                                        <td
+                                                            class="text-end border-0"
+                                                        >
+                                                            <strong
+                                                                >$121.88</strong
+                                                            >
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- What's Next Section -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="mb-0">What's Next?</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="whats-next-steps">
+                                        <div class="d-flex mb-3">
+                                            <div class="next-step-number me-3">
+                                                1
+                                            </div>
+                                            <div>
+                                                <h6>
+                                                    Order Confirmation Email
+                                                </h6>
+                                                <p class="mb-0">
+                                                    We've sent an order
+                                                    confirmation to
+                                                    <strong
+                                                        >john.doe@example.com</strong
+                                                    >. Please check your inbox.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex mb-3">
+                                            <div class="next-step-number me-3">
+                                                2
+                                            </div>
+                                            <div>
+                                                <h6>Order Processing</h6>
+                                                <p class="mb-0">
+                                                    We're now processing your
+                                                    order. Digital products will
+                                                    be available shortly in your
+                                                    account.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <div class="next-step-number me-3">
+                                                3
+                                            </div>
+                                            <div>
+                                                <h6>Track Your Order</h6>
+                                                <p class="mb-0">
+                                                    You can track the status of
+                                                    your order in your
+                                                    <a href="profile.html"
+                                                        >account dashboard</a
+                                                    >
+                                                    at any time.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="confirmation-actions text-center mb-5">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3 mb-md-0">
+                                        <a
+                                            href="downloads.html"
+                                            class="btn btn-primary btn-lg w-100"
+                                            >View Your Downloads</a
+                                        >
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a
+                                            href="products.html"
+                                            class="btn btn-outline-primary btn-lg w-100"
+                                            >Continue Shopping</a
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Related Products -->
+                            <div class="related-products">
+                                <h4 class="text-center mb-4">
+                                    You Might Also Like
+                                </h4>
+                                <div class="row">
+                                    <!-- Product 1 -->
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card product-card h-100">
+                                            <img
+                                                src="./images/placeholder-small.webp"
+                                                class="card-img-top product-img"
+                                                alt="JavaScript Patterns"
+                                            />
+                                            <div
+                                                class="card-body d-flex flex-column"
+                                            >
+                                                <h5 class="card-title">
+                                                    JavaScript Patterns
+                                                </h5>
+                                                <p class="card-text text-muted">
+                                                    E-books
+                                                </p>
+                                                <div class="mt-auto">
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center"
+                                                    >
+                                                        <span class="price"
+                                                            >$19.99</span
+                                                        >
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-sm btn-outline-primary"
+                                                            >View</a
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 2 -->
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card product-card h-100">
+                                            <img
+                                                src="./images/placeholder-small.webp"
+                                                class="card-img-top product-img"
+                                                alt="CSS Grid Mastery"
+                                            />
+                                            <div
+                                                class="card-body d-flex flex-column"
+                                            >
+                                                <h5 class="card-title">
+                                                    CSS Grid Mastery
+                                                </h5>
+                                                <p class="card-text text-muted">
+                                                    E-books
+                                                </p>
+                                                <div class="mt-auto">
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center"
+                                                    >
+                                                        <span class="price"
+                                                            >$14.99</span
+                                                        >
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-sm btn-outline-primary"
+                                                            >View</a
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 3 -->
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card product-card h-100">
+                                            <img
+                                                src="./images/placeholder-small.webp"
+                                                class="card-img-top product-img"
+                                                alt="Web Performance"
+                                            />
+                                            <div
+                                                class="card-body d-flex flex-column"
+                                            >
+                                                <h5 class="card-title">
+                                                    Web Performance
+                                                </h5>
+                                                <p class="card-text text-muted">
+                                                    E-books
+                                                </p>
+                                                <div class="mt-auto">
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center"
+                                                    >
+                                                        <span class="price"
+                                                            >$22.99</span
+                                                        >
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-sm btn-outline-primary"
+                                                            >View</a
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="container">
+                <p>&copy; 2025 OptiSandbox. Built with Optimizely CMS.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+

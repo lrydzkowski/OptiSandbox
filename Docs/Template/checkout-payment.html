@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OptiSandbox - Payment</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link href="./styles/styles.css" rel="stylesheet" />
+        <link href="./styles/e-commerce.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="content-wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">OptiSandbox</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link active"
+                                    aria-current="page"
+                                    href="index.html"
+                                    >Home</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html"
+                                    >About Me</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html"
+                                    >Shop</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login-register.html"
+                                    >Sign In</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <div
+                                    class="cart-icon-wrapper nav-link"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#basketOffcanvas"
+                                    aria-controls="basketOffcanvas"
+                                >
+                                    <span class="cart-icon">🛒</span>
+                                    <span class="cart-count">2</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container breadcrumb-container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="basket.html">Basket</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="checkout-shipping.html">Shipping</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Payment
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Main content -->
+            <div class="container">
+                <header class="text-center mb-5">
+                    <h1 class="display-4">Checkout</h1>
+                    <p class="lead">Complete your purchase</p>
+                </header>
+
+                <!-- Checkout Steps -->
+                <div class="checkout-steps mb-4">
+                    <div class="step completed">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Shipping</div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step active">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Payment</div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Confirmation</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Payment Form -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">Payment Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="payment-form">
+                                    <!-- Payment Methods -->
+                                    <div class="mb-4">
+                                        <h6>Payment Method</h6>
+
+                                        <!-- Credit Card Option -->
+                                        <div
+                                            class="card mb-3 payment-method-card active"
+                                        >
+                                            <div class="card-body">
+                                                <div class="form-check">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="paymentMethod"
+                                                        id="creditCardPayment"
+                                                        checked
+                                                    />
+                                                    <label
+                                                        class="form-check-label d-flex justify-content-between align-items-center w-100"
+                                                        for="creditCardPayment"
+                                                    >
+                                                        <div>
+                                                            <strong
+                                                                >Credit
+                                                                Card</strong
+                                                            >
+                                                        </div>
+                                                    </label>
+                                                </div>
+
+                                                <div
+                                                    class="credit-card-form mt-3"
+                                                >
+                                                    <div class="row">
+                                                        <div
+                                                            class="col-12 mb-3"
+                                                        >
+                                                            <label
+                                                                for="cardNumber"
+                                                                class="form-label"
+                                                                >Card Number
+                                                                *</label
+                                                            >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="cardNumber"
+                                                                placeholder="XXXX XXXX XXXX XXXX"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div
+                                                            class="col-md-6 mb-3"
+                                                        >
+                                                            <label
+                                                                for="expiryDate"
+                                                                class="form-label"
+                                                                >Expiry Date
+                                                                *</label
+                                                            >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="expiryDate"
+                                                                placeholder="MM/YY"
+                                                                required
+                                                            />
+                                                        </div>
+                                                        <div
+                                                            class="col-md-6 mb-3"
+                                                        >
+                                                            <label
+                                                                for="cvv"
+                                                                class="form-label"
+                                                                >CVV *</label
+                                                            >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="cvv"
+                                                                placeholder="XXX"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div
+                                                            class="col-12 mb-3"
+                                                        >
+                                                            <label
+                                                                for="nameOnCard"
+                                                                class="form-label"
+                                                                >Name on Card
+                                                                *</label
+                                                            >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="nameOnCard"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="form-check mb-0"
+                                                    >
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="checkbox"
+                                                            id="saveCard"
+                                                        />
+                                                        <label
+                                                            class="form-check-label"
+                                                            for="saveCard"
+                                                        >
+                                                            Save this card for
+                                                            future purchases
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- PayPal Option -->
+                                        <div
+                                            class="card mb-3 payment-method-card"
+                                        >
+                                            <div class="card-body">
+                                                <div class="form-check">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="paymentMethod"
+                                                        id="paypalPayment"
+                                                    />
+                                                    <label
+                                                        class="form-check-label d-flex justify-content-between align-items-center w-100"
+                                                        for="paypalPayment"
+                                                    >
+                                                        <div>
+                                                            <strong
+                                                                >PayPal</strong
+                                                            >
+                                                            <p
+                                                                class="text-muted mb-0 mt-1"
+                                                            >
+                                                                You will be
+                                                                redirected to
+                                                                PayPal to
+                                                                complete your
+                                                                purchase.
+                                                            </p>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Apple Pay Option -->
+                                        <div class="card payment-method-card">
+                                            <div class="card-body">
+                                                <div class="form-check">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="paymentMethod"
+                                                        id="applePayment"
+                                                    />
+                                                    <label
+                                                        class="form-check-label d-flex justify-content-between align-items-center w-100"
+                                                        for="applePayment"
+                                                    >
+                                                        <div>
+                                                            <strong
+                                                                >Apple
+                                                                Pay</strong
+                                                            >
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Billing Address -->
+                                    <div class="mb-4">
+                                        <h6>Billing Address</h6>
+                                        <div class="form-check mb-3">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="sameAsShipping"
+                                                checked
+                                            />
+                                            <label
+                                                class="form-check-label"
+                                                for="sameAsShipping"
+                                            >
+                                                Same as shipping address
+                                            </label>
+                                        </div>
+
+                                        <div
+                                            class="billing-address-form d-none"
+                                        >
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label
+                                                        for="billingFirstName"
+                                                        class="form-label"
+                                                        >First Name *</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="billingFirstName"
+                                                    />
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label
+                                                        for="billingLastName"
+                                                        class="form-label"
+                                                        >Last Name *</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="billingLastName"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label
+                                                    for="billingAddress"
+                                                    class="form-label"
+                                                    >Address *</label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="billingAddress"
+                                                />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label
+                                                    for="billingAddress2"
+                                                    class="form-label"
+                                                    >Apartment, suite, etc.
+                                                    (optional)</label
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="billingAddress2"
+                                                />
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label
+                                                        for="billingCity"
+                                                        class="form-label"
+                                                        >City *</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="billingCity"
+                                                    />
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label
+                                                        for="billingState"
+                                                        class="form-label"
+                                                        >State/Province *</label
+                                                    >
+                                                    <select
+                                                        class="form-select"
+                                                        id="billingState"
+                                                    >
+                                                        <option value="">
+                                                            Select...
+                                                        </option>
+                                                        <option>
+                                                            California
+                                                        </option>
+                                                        <option>
+                                                            New York
+                                                        </option>
+                                                        <option>Texas</option>
+                                                        <!-- More states -->
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label
+                                                        for="billingZip"
+                                                        class="form-label"
+                                                        >Zip/Postal Code
+                                                        *</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="billingZip"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label
+                                                    for="billingCountry"
+                                                    class="form-label"
+                                                    >Country *</label
+                                                >
+                                                <select
+                                                    class="form-select"
+                                                    id="billingCountry"
+                                                >
+                                                    <option value="">
+                                                        Select...
+                                                    </option>
+                                                    <option selected>
+                                                        United States
+                                                    </option>
+                                                    <option>Canada</option>
+                                                    <option>
+                                                        United Kingdom
+                                                    </option>
+                                                    <!-- More countries -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <a
+                                            href="checkout-shipping.html"
+                                            class="btn btn-outline-primary"
+                                            >Return to Shipping</a
+                                        >
+                                        <a
+                                            href="confirmation.html"
+                                            class="btn btn-primary"
+                                            >Complete Order</a
+                                        >
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="col-lg-4">
+                        <div class="card order-summary">
+                            <div class="card-header">
+                                <h5 class="mb-0">Order Summary</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="order-items mb-3">
+                                    <div class="order-item d-flex mb-2">
+                                        <div class="order-item-img me-2">
+                                            <img
+                                                src="./images/placeholder-checkout.webp"
+                                                class="img-fluid rounded"
+                                                alt="Modern Web Development"
+                                            />
+                                            <span class="item-quantity">1</span>
+                                        </div>
+                                        <div
+                                            class="order-item-details flex-grow-1"
+                                        >
+                                            <h6 class="mb-0">
+                                                Modern Web Development
+                                            </h6>
+                                            <small class="text-muted"
+                                                >E-books</small
+                                            >
+                                        </div>
+                                        <div class="order-item-price">
+                                            $24.99
+                                        </div>
+                                    </div>
+                                    <div class="order-item d-flex">
+                                        <div class="order-item-img me-2">
+                                            <img
+                                                src="./images/placeholder-checkout.webp"
+                                                class="img-fluid rounded"
+                                                alt="React Masterclass"
+                                            />
+                                            <span class="item-quantity">1</span>
+                                        </div>
+                                        <div
+                                            class="order-item-details flex-grow-1"
+                                        >
+                                            <h6 class="mb-0">
+                                                React Masterclass
+                                            </h6>
+                                            <small class="text-muted"
+                                                >Courses</small
+                                            >
+                                        </div>
+                                        <div class="order-item-price">
+                                            $89.99
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+
+                                <div
+                                    class="d-flex justify-content-between mb-2"
+                                >
+                                    <span>Subtotal</span>
+                                    <span>$114.98</span>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-between mb-2"
+                                >
+                                    <span>Shipping</span>
+                                    <span>$0.00</span>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-between mb-3"
+                                >
+                                    <span>Tax</span>
+                                    <span>$6.90</span>
+                                </div>
+
+                                <hr />
+
+                                <div
+                                    class="d-flex justify-content-between mb-0"
+                                >
+                                    <strong>Total</strong>
+                                    <strong>$121.88</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="container">
+                <p>&copy; 2025 OptiSandbox. Built with Optimizely CMS.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Toggle billing address form
+                const sameAsShippingCheckbox =
+                    document.getElementById("sameAsShipping");
+                const billingAddressForm = document.querySelector(
+                    ".billing-address-form"
+                );
+
+                sameAsShippingCheckbox.addEventListener("change", function () {
+                    if (this.checked) {
+                        billingAddressForm.classList.add("d-none");
+                    } else {
+                        billingAddressForm.classList.remove("d-none");
+                    }
+                });
+
+                // Toggle active payment method
+                const paymentMethods = document.querySelectorAll(
+                    'input[name="paymentMethod"]'
+                );
+                const paymentCards = document.querySelectorAll(
+                    ".payment-method-card"
+                );
+
+                paymentMethods.forEach((method) => {
+                    method.addEventListener("change", function () {
+                        // Remove active class from all cards
+                        paymentCards.forEach((card) => {
+                            card.classList.remove("active");
+                        });
+
+                        // Add active class to selected card
+                        this.closest(".payment-method-card").classList.add(
+                            "active"
+                        );
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
+

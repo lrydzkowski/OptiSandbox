@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OptiSandbox - Order History</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link href="./styles/styles.css" rel="stylesheet" />
+        <link href="./styles/e-commerce.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="content-wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">OptiSandbox</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link active"
+                                    aria-current="page"
+                                    href="index.html"
+                                    >Home</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html"
+                                    >About Me</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html"
+                                    >Shop</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login-register.html"
+                                    >Sign In</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <div
+                                    class="cart-icon-wrapper nav-link"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#basketOffcanvas"
+                                    aria-controls="basketOffcanvas"
+                                >
+                                    <span class="cart-icon">🛒</span>
+                                    <span class="cart-count">2</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container breadcrumb-container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Order History
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Main content -->
+            <div class="container">
+                <div class="row">
+                    <!-- Sidebar -->
+                    <div class="col-lg-3 mb-4">
+                        <div class="profile-sidebar">
+                            <div class="card text-center mb-4">
+                                <div class="card-body">
+                                    <div class="profile-avatar mb-3">JD</div>
+                                    <h5 class="card-title mb-1">John Doe</h5>
+                                    <p class="text-muted">
+                                        john.doe@example.com
+                                    </p>
+                                    <p class="text-muted small mb-0">
+                                        Member since: January 2025
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="list-group mb-4">
+                                <a
+                                    href="profile.html"
+                                    class="list-group-item list-group-item-action"
+                                >
+                                    Profile Information
+                                </a>
+                                <a
+                                    href="orders.html"
+                                    class="list-group-item list-group-item-action active"
+                                >
+                                    Order History
+                                </a>
+                                <a
+                                    href="downloads.html"
+                                    class="list-group-item list-group-item-action"
+                                >
+                                    Downloads
+                                </a>
+                                <a
+                                    href="addresses.html"
+                                    class="list-group-item list-group-item-action"
+                                >
+                                    Addresses
+                                </a>
+                                <a
+                                    href="payment-methods.html"
+                                    class="list-group-item list-group-item-action"
+                                >
+                                    Payment Methods
+                                </a>
+                                <a
+                                    href="wishlist.html"
+                                    class="list-group-item list-group-item-action"
+                                >
+                                    Wishlist
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="col-lg-9">
+                        <div class="card mb-4">
+                            <div
+                                class="card-header d-flex justify-content-between align-items-center"
+                            >
+                                <h5 class="mb-0">Order History</h5>
+                                <div class="d-flex">
+                                    <div
+                                        class="input-group input-group-sm me-2"
+                                        style="width: 200px"
+                                    >
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Search orders..."
+                                        />
+                                    </div>
+                                    <select
+                                        class="form-select form-select-sm"
+                                        style="width: 150px"
+                                    >
+                                        <option selected>All Orders</option>
+                                        <option>Last 30 Days</option>
+                                        <option>Last 6 Months</option>
+                                        <option>2025</option>
+                                        <option>2024</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="orders-list">
+                                    <!-- Order 1 -->
+                                    <div class="card order-card">
+                                        <div
+                                            class="order-header d-flex justify-content-between align-items-center"
+                                        >
+                                            <div>
+                                                <span class="order-number"
+                                                    >Order #ORD12345</span
+                                                >
+                                                <span class="text-muted ms-3"
+                                                    >March 5, 2025</span
+                                                >
+                                            </div>
+                                            <div>
+                                                <span
+                                                    class="order-status status-delivered"
+                                                    >Delivered</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="d-flex mb-3">
+                                                        <div class="me-3">
+                                                            <img
+                                                                src="./images/placeholder-checkout.webp"
+                                                                class="img-fluid rounded"
+                                                                alt="Modern Web Development"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-1">
+                                                                Modern Web
+                                                                Development
+                                                            </h6>
+                                                            <p
+                                                                class="text-muted mb-0"
+                                                            >
+                                                                E-books
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <div class="me-3">
+                                                            <img
+                                                                src="./images/placeholder-checkout.webp"
+                                                                class="img-fluid rounded"
+                                                                alt="DevOps Toolkit"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-1">
+                                                                DevOps Toolkit
+                                                            </h6>
+                                                            <p
+                                                                class="text-muted mb-0"
+                                                            >
+                                                                Development
+                                                                Tools
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="col-md-4 text-md-end mt-3 mt-md-0"
+                                                >
+                                                    <div class="mb-3">
+                                                        <span class="fw-bold"
+                                                            >$74.98</span
+                                                        >
+                                                        <span
+                                                            class="text-muted ms-2"
+                                                            >(2 items)</span
+                                                        >
+                                                    </div>
+                                                    <div
+                                                        class="btn-group btn-group-sm"
+                                                    >
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-outline-primary"
+                                                            >View Order</a
+                                                        >
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-outline-secondary"
+                                                            >Download</a
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Order 2 -->
+                                    <div class="card order-card">
+                                        <div
+                                            class="order-header d-flex justify-content-between align-items-center"
+                                        >
+                                            <div>
+                                                <span class="order-number"
+                                                    >Order #ORD12280</span
+                                                >
+                                                <span class="text-muted ms-3"
+                                                    >February 20, 2025</span
+                                                >
+                                            </div>
+                                            <div>
+                                                <span
+                                                    class="order-status status-shipped"
+                                                    >Shipped</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="d-flex">
+                                                        <div class="me-3">
+                                                            <img
+                                                                src="./images/placeholder-checkout.webp"
+                                                                class="img-fluid rounded"
+                                                                alt="Dashboard Template"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-1">
+                                                                Dashboard
+                                                                Template
+                                                            </h6>
+                                                            <p
+                                                                class="text-muted mb-0"
+                                                            >
+                                                                Templates
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="col-md-4 text-md-end mt-3 mt-md-0"
+                                                >
+                                                    <div class="mb-3">
+                                                        <span class="fw-bold"
+                                                            >$59.99</span
+                                                        >
+                                                        <span
+                                                            class="text-muted ms-2"
+                                                            >(1 item)</span
+                                                        >
+                                                    </div>
+                                                    <div
+                                                        class="btn-group btn-group-sm"
+                                                    >
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-outline-primary"
+                                                            >View Order</a
+                                                        >
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-outline-secondary"
+                                                            >Track Shipment</a
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Order 3 -->
+                                    <div class="card order-card">
+                                        <div
+                                            class="order-header d-flex justify-content-between align-items-center"
+                                        >
+                                            <div>
+                                                <span class="order-number"
+                                                    >Order #ORD11982</span
+                                                >
+                                                <span class="text-muted ms-3"
+                                                    >January 15, 2025</span
+                                                >
+                                            </div>
+                                            <div>
+                                                <span
+                                                    class="order-status status-processing"
+                                                    >Processing</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="d-flex">
+                                                        <div class="me-3">
+                                                            <img
+                                                                src="./images/placeholder-checkout.webp"
+                                                                class="img-fluid rounded"
+                                                                alt="React Masterclass"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-1">
+                                                                React
+                                                                Masterclass
+                                                            </h6>
+                                                            <p
+                                                                class="text-muted mb-0"
+                                                            >
+                                                                Courses
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="col-md-4 text-md-end mt-3 mt-md-0"
+                                                >
+                                                    <div class="mb-3">
+                                                        <span class="fw-bold"
+                                                            >$89.99</span
+                                                        >
+                                                        <span
+                                                            class="text-muted ms-2"
+                                                            >(1 item)</span
+                                                        >
+                                                    </div>
+                                                    <div
+                                                        class="btn-group btn-group-sm"
+                                                    >
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-outline-primary"
+                                                            >View Order</a
+                                                        >
+                                                        <a
+                                                            href="#"
+                                                            class="btn btn-outline-secondary"
+                                                            >Contact Support</a
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pagination -->
+                                <nav
+                                    aria-label="Order history pagination"
+                                    class="mt-4"
+                                >
+                                    <ul
+                                        class="pagination justify-content-center"
+                                    >
+                                        <li class="page-item active">
+                                            <a class="page-link" href="#">1</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">2</a>
+                                        </li>
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#"
+                                                >Next</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="container">
+                <p>&copy; 2025 OptiSandbox. Built with Optimizely CMS.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+
