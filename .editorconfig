@@ -1925,6 +1925,13 @@ resharper_csharp_place_accessorholder_attribute_on_same_line = never
 resharper_csharp_place_field_attribute_on_same_line = never
 resharper_csharp_place_method_attribute_on_same_line = never
 
+resharper_csharp_blank_lines_around_field = 1
+resharper_csharp_blank_lines_around_single_line_field = 1
+resharper_csharp_blank_lines_around_property = 1
+resharper_csharp_blank_lines_around_single_line_property = 1
+resharper_csharp_blank_lines_around_auto_property = 1
+resharper_csharp_blank_lines_around_single_line_auto_property = 1
+
 # Verify settings
 [*.{received,verified}.{json,txt,xml}]
 charset = "utf-8-bom"
