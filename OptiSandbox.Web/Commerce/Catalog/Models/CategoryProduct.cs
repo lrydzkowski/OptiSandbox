@@ -10,7 +10,7 @@ public class CategoryProduct
 
     public string ShortDescription { get; set; } = "";
 
-    public decimal Price { get; set; }
+    public decimal? Price { get; set; }
 
     public string ProductUrl { get; set; } = "";
 }

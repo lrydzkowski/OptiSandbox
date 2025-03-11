@@ -30,6 +30,7 @@ public class InitializationModule : IConfigurableModule
     private static void AddServices(IServiceCollection services)
     {
         services.AddScoped<IStandardCategoryViewModelBuilder, StandardCategoryViewModelBuilder>();
+        services.AddScoped<IPriceResolver, PriceResolver>();
     }
 
     private static void AddViewsCustomPath(IServiceCollection services)

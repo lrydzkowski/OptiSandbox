@@ -17,6 +17,8 @@ public interface IStandardCategoryViewModelBuilder
 
 public class StandardCategoryViewModelBuilder : PageViewModelBuilder, IStandardCategoryViewModelBuilder
 {
+    private readonly IPriceResolver _priceResolver;
+
     private readonly ThumbnailUrlResolver _thumbnailUrlResolver;
 
     private readonly IUrlResolver _urlResolver;
@@ -25,12 +27,14 @@ public class StandardCategoryViewModelBuilder : PageViewModelBuilder, IStandardC
         IContentLoader contentLoader,
         IHttpContextAccessor httpContextAccessor,
         ThumbnailUrlResolver thumbnailUrlResolver,
-        IUrlResolver urlResolver
+        IUrlResolver urlResolver,
+        IPriceResolver priceResolver
     ) :
         base(contentLoader, httpContextAccessor)
     {
         _thumbnailUrlResolver = thumbnailUrlResolver;
         _urlResolver = urlResolver;
+        _priceResolver = priceResolver;
     }
 
     public StandardCategoryViewModel Build(StandardCategory standardCategory)
@@ -58,8 +62,8 @@ public class StandardCategoryViewModelBuilder : PageViewModelBuilder, IStandardC
                     ImageUrl = _thumbnailUrlResolver.GetThumbnailUrl(node, "Thumbnail")
                                ?? _urlResolver.GetUrl(standardCategory.PlaceholderImageCategoryPage),
                     Name = node.Name,
-                    Type = node.ContentType.ToString(),
-                    Price = 1,
+                    Type = "E-books",
+                    Price = _priceResolver.GetProductSalePrice(node)?.UnitPrice.Amount,
                     ShortDescription = node.ShortDescription ?? "",
                     ProductUrl = _urlResolver.GetUrl(node.ContentLink)
                 }

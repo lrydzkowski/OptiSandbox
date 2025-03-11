@@ -13,7 +13,4 @@ namespace OptiSandbox.Web.Commerce.Catalog.Models.Variations;
 )]
 public class EbookVariation : VariationContent
 {
-    [Display(Name = "E-book version", Order = 10, GroupName = SystemTabNames.Content)]
-    [SelectOne(SelectionFactoryType = typeof(VersionSelectionFactory))]
-    public virtual int Version { get; set; }
 }
