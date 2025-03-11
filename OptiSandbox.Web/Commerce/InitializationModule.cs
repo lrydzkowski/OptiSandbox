@@ -4,6 +4,7 @@ using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using Microsoft.AspNetCore.Mvc.Razor;
 using OptiSandbox.Web.Commerce.Catalog.Infrastructure;
+using OptiSandbox.Web.Commerce.Catalog.Services;
 
 namespace OptiSandbox.Web.Commerce;
 
@@ -22,7 +23,13 @@ public class InitializationModule : IConfigurableModule
 
     public void ConfigureContainer(ServiceConfigurationContext context)
     {
+        AddServices(context.Services);
         AddViewsCustomPath(context.Services);
+    }
+
+    private static void AddServices(IServiceCollection services)
+    {
+        services.AddScoped<IStandardCategoryViewModelBuilder, StandardCategoryViewModelBuilder>();
     }
 
     private static void AddViewsCustomPath(IServiceCollection services)

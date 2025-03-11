@@ -15,7 +15,7 @@ public interface IPageViewModelBuilder
 public class PageViewModelBuilder
     : IPageViewModelBuilder
 {
-    private readonly IContentLoader _contentLoader;
+    protected readonly IContentLoader _contentLoader;
 
     private readonly IHttpContextAccessor _httpContextAccessor;
 

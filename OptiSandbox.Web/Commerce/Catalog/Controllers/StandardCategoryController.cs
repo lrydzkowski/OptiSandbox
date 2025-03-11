@@ -1,21 +1,21 @@
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using OptiSandbox.Web.Commerce.Catalog.Models.Categories;
-using OptiSandbox.Web.Content.Services;
+using OptiSandbox.Web.Commerce.Catalog.Services;
 
 namespace OptiSandbox.Web.Commerce.Catalog.Controllers;
 
 public class StandardCategoryController : ContentController<StandardCategory>
 {
-    private readonly IPageViewModelBuilder _pageViewModelBuilder;
+    private readonly IStandardCategoryViewModelBuilder _standardCategoryViewModelBuilder;
 
-    public StandardCategoryController(IPageViewModelBuilder pageViewModelBuilder)
+    public StandardCategoryController(IStandardCategoryViewModelBuilder standardCategoryViewModelBuilder)
     {
-        _pageViewModelBuilder = pageViewModelBuilder;
+        _standardCategoryViewModelBuilder = standardCategoryViewModelBuilder;
     }
 
     public ActionResult Index(StandardCategory currentContent)
     {
-        return View(_pageViewModelBuilder.Build(currentContent));
+        return View(_standardCategoryViewModelBuilder.Build(currentContent));
     }
 }
