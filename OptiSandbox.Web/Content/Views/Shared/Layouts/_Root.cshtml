@@ -1,12 +1,12 @@
-@model IPageViewModel<ICurrentPageViewModel<SitePageData>>
+@model IPageViewModel<IContent>
 
 <!DOCTYPE html>
-<html lang="@Model.CurrentPageViewModel.CurrentPage.Language">
+<html lang="@Model.StartPage.Language">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@(Model.CurrentPageViewModel.CurrentPage.Name)</title>
+    <title>@(Model.CurrentContent.Name)</title>
     <link href="~/bootstrap.min.css" rel="stylesheet"/>
     <link href="~/styles.css" rel="stylesheet"/>
 </head>
@@ -18,7 +18,7 @@
             @await Html.PartialAsync("_NavigationMenu")
         </div>
     </nav>
-    @if (Model.CurrentPageViewModel.CurrentPage.EnableBreadcrumbs)
+    @if (Model.EnableBreadcrumbs)
     {
         <div class="container breadcrumb-container">
             <ol class="breadcrumb">

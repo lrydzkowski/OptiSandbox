@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using OptiSandbox.Web.Commerce.Catalog.Models.Categories;
 
 namespace OptiSandbox.Web.Content.Models.Pages;
 
@@ -20,4 +21,8 @@ public class StartPage : MainPageData
     [CultureSpecific]
     [Display(Name = "Footer text", GroupName = SystemTabNames.Content, Order = 300)]
     public virtual string? FooterText { get; set; }
+
+    [Display(Name = "Products catalog", GroupName = SystemTabNames.Content, Order = 600)]
+    [AllowedTypes(typeof(StandardCategory))]
+    public virtual ContentReference? ProductsCatalog { get; set; }
 }

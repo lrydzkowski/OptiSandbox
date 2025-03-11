@@ -2,38 +2,40 @@ using OptiSandbox.Web.Content.Models.Pages;
 
 namespace OptiSandbox.Web.Content.Models.ViewModels;
 
-public interface IPageViewModel<out T> where T : ICurrentPageViewModel<SitePageData>
+public interface IPageViewModel<out T> where T : IContent
 {
-    public IReadOnlyList<MenuPage> MenuPages { get; set; }
+    StartPage StartPage { get; init; }
 
-    T CurrentPageViewModel { get; }
+    public IReadOnlyList<MenuPage> MenuPages { get; init; }
 
-    StartPage StartPage { get; set; }
+    IReadOnlyList<ContentReference> Ancestors { get; init; }
 
-    List<ContentReference> Ancestors { get; set; }
+    bool EnableBreadcrumbs { get; init; }
+
+    T CurrentContent { get; }
 }
 
-public class PageViewModel<T> : IPageViewModel<T> where T : ICurrentPageViewModel<SitePageData>
+public class PageViewModel<T> : IPageViewModel<T> where T : IContent
 {
-    public PageViewModel(T currentPage)
+    public PageViewModel()
     {
-        CurrentPageViewModel = currentPage;
     }
 
-    public IReadOnlyList<MenuPage> MenuPages { get; set; } = [];
+    public PageViewModel(IPageViewModel<T> pageViewModel)
+    {
+        StartPage = pageViewModel.StartPage;
+        MenuPages = pageViewModel.MenuPages;
+        Ancestors = pageViewModel.Ancestors;
+        CurrentContent = pageViewModel.CurrentContent;
+    }
 
-    public T CurrentPageViewModel { get; }
+    public StartPage StartPage { get; init; } = new();
 
-    public required StartPage StartPage { get; set; }
+    public IReadOnlyList<MenuPage> MenuPages { get; init; } = [];
 
-    public List<ContentReference> Ancestors { get; set; } = [];
-}
+    public IReadOnlyList<ContentReference> Ancestors { get; init; } = [];
 
-public class MenuPage
-{
-    public string Label { get; set; } = "";
+    public bool EnableBreadcrumbs { get; init; }
 
-    public PageReference? PageReference { get; set; }
-
-    public bool IsSelected { get; set; }
+    public T CurrentContent { get; init; } = default!;
 }

@@ -1,15 +1,15 @@
-@model IPageViewModel<ICurrentPageViewModel<AboutPage>>
+@model IPageViewModel<AboutPage>
 
 <header class="text-center mb-5">
-    <h1 class="display-4">@Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Title)</h1>
-    <p class="lead">@Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Subtitle)</p>
+    <h1 class="display-4">@Html.PropertyFor(viewModel => viewModel.CurrentContent.Title)</h1>
+    <p class="lead">@Html.PropertyFor(viewModel => viewModel.CurrentContent.Subtitle)</p>
 </header>
 
 <div class="row about-section">
     <div class="col-lg-4 text-center mb-4">
-        @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.PersonImage)
+        @Html.PropertyFor(viewModel => viewModel.CurrentContent.PersonImage)
     </div>
     <div class="col-lg-8">
-        @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Content)
+        @Html.PropertyFor(viewModel => viewModel.CurrentContent.Content)
     </div>
 </div>

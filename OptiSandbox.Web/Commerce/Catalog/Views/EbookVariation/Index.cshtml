@@ -1,3 +1,3 @@
-@model EbookVariation
+@model IPageViewModel<EbookVariation>
 
-<p>Code: @Html.PropertyFor(variation => variation.Code)</p>
+<p>Code: @Html.PropertyFor(viewModel => viewModel.CurrentContent.Code)</p>

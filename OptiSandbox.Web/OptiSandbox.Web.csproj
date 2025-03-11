@@ -7,33 +7,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Using Include="EPiServer"/>
-    <Using Include="EPiServer.Core"/>
-    <Using Include="EPiServer.DataAbstraction"/>
-    <Using Include="EPiServer.DataAnnotations"/>
+    <Using Include="EPiServer" />
+    <Using Include="EPiServer.Core" />
+    <Using Include="EPiServer.DataAbstraction" />
+    <Using Include="EPiServer.DataAnnotations" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="12.32.4"/>
-    <PackageReference Include="EPiServer.Commerce" Version="14.35.0"/>
-    <PackageReference Include="EPiServer.Commerce.FindSearchProvider" Version="12.2.1"/>
-    <PackageReference Include="EPiServer.Find.Cms" Version="16.4.0"/>
-    <PackageReference Include="EPiServer.Find.Commerce" Version="12.2.1"/>
-    <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.4.1"/>
-    <PackageReference Include="JetBrains.Annotations" Version="2024.3.0"/>
-    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0"/>
+    <PackageReference Include="EPiServer.CMS" Version="12.32.4" />
+    <PackageReference Include="EPiServer.Commerce" Version="14.35.0" />
+    <PackageReference Include="EPiServer.Commerce.FindSearchProvider" Version="12.2.1" />
+    <PackageReference Include="EPiServer.Find.Cms" Version="16.4.0" />
+    <PackageReference Include="EPiServer.Find.Commerce" Version="12.2.1" />
+    <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.4.1" />
+    <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Translations\**\*"/>
+    <EmbeddedResource Include="Resources\Translations\**\*" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="App_Data\"/>
+    <Folder Include="App_Data\" />
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="Content\Views\ArticlePage\Index.cshtml"/>
-    <AdditionalFiles Include="Content\Views\Shared\Components\ArticlePage\Default.cshtml"/>
+    <AdditionalFiles Include="Content\Views\ArticlePage\Index.cshtml" />
+    <AdditionalFiles Include="Content\Views\Shared\Components\ArticlePage\Default.cshtml" />
   </ItemGroup>
 </Project>

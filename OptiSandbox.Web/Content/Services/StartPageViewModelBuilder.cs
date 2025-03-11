@@ -14,11 +14,19 @@ public interface IStartPageViewModelBuilder
 }
 
 public class StartPageViewModelBuilder
-    : IStartPageViewModelBuilder
+    : PageViewModelBuilder, IStartPageViewModelBuilder
 {
+    public StartPageViewModelBuilder(IContentLoader contentLoader, IHttpContextAccessor httpContextAccessor) : base(
+        contentLoader,
+        httpContextAccessor
+    )
+    {
+    }
+
     public StartPageViewModel Build(StartPage currentPage, int page = 1)
     {
-        StartPageViewModel viewModel = new(currentPage)
+        IPageViewModel<StartPage> pageViewModel = Build<StartPage>(currentPage);
+        StartPageViewModel viewModel = new(pageViewModel)
         {
             Articles = GetArticles(page),
             ArticlesCurrentPageIndex = page

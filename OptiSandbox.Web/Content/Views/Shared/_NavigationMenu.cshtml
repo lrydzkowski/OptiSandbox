@@ -1,4 +1,4 @@
-@model IPageViewModel<ICurrentPageViewModel<SitePageData>>
+@model IPageViewModel<IContent>
 
 @if (Model.MenuPages.Count > 0)
 {
@@ -18,7 +18,7 @@
             @foreach (MenuPage menuPage in Model.MenuPages)
             {
                 <li class="nav-item">
-                    @Html.PageLink(menuPage.Label, menuPage.PageReference, null, new { @class = "nav-link" + (menuPage.IsSelected ? " active" : null) })
+                    @Html.ContentLink(menuPage.Label, menuPage.PageReference, null, new { @class = "nav-link" + (menuPage.IsSelected ? " active" : null) })
                 </li>
             }
         </ul>

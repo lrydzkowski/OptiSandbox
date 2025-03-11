@@ -1,5 +1,7 @@
 using EPiServer.Filters;
 using EPiServer.Web.Routing;
+using OptiSandbox.Web.Commerce.Catalog.Models.Categories;
+using OptiSandbox.Web.Content.Models;
 using OptiSandbox.Web.Content.Models.Pages;
 using OptiSandbox.Web.Content.Models.ViewModels;
 
@@ -7,14 +9,14 @@ namespace OptiSandbox.Web.Content.Services;
 
 public interface IPageViewModelBuilder
 {
-    IPageViewModel<ICurrentPageViewModel<T>> Build<T>(T page) where T : SitePageData;
-    IPageViewModel<T> BuildPageViewModel<T>(T pageViewModel) where T : ICurrentPageViewModel<SitePageData>;
+    IPageViewModel<T> Build<T>(T currentContent) where T : IContent;
 }
 
 public class PageViewModelBuilder
     : IPageViewModelBuilder
 {
     private readonly IContentLoader _contentLoader;
+
     private readonly IHttpContextAccessor _httpContextAccessor;
 
     public PageViewModelBuilder(IContentLoader contentLoader, IHttpContextAccessor httpContextAccessor)
@@ -23,27 +25,19 @@ public class PageViewModelBuilder
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public IPageViewModel<ICurrentPageViewModel<T>> Build<T>(T page) where T : SitePageData
-    {
-        return BuildPageViewModel(BuildCurrentPageViewModel(page));
-    }
-
-    public IPageViewModel<T> BuildPageViewModel<T>(T pageViewModel) where T : ICurrentPageViewModel<SitePageData>
+    public IPageViewModel<T> Build<T>(T currentContent) where T : IContent
     {
         StartPage startPage = GetStartPage();
-        IPageViewModel<T> viewModel = new PageViewModel<T>(pageViewModel)
+        IPageViewModel<T> viewModel = new PageViewModel<T>
         {
             StartPage = startPage,
             MenuPages = GetMainMenuPages(startPage),
-            Ancestors = GetAncestors()
+            Ancestors = GetAncestors(),
+            CurrentContent = currentContent,
+            EnableBreadcrumbs = (currentContent as ISitePage)?.EnableBreadcrumbs ?? false
         };
 
         return viewModel;
-    }
-
-    private ICurrentPageViewModel<T> BuildCurrentPageViewModel<T>(T currentPage) where T : SitePageData
-    {
-        return new CurrentPageViewModel<T>(currentPage);
     }
 
     private StartPage GetStartPage()
@@ -54,15 +48,28 @@ public class PageViewModelBuilder
     private List<MenuPage> GetMainMenuPages(StartPage startPage)
     {
         ContentReference? currentPageContentLink = _httpContextAccessor.HttpContext.GetContentLink();
-        List<MenuPage> menuPages =
-        [
-            new()
+        List<MenuPage> menuPages = [];
+        AddMainPage(menuPages, startPage, currentPageContentLink);
+        AddPages(menuPages, currentPageContentLink);
+        AddProductsPage(menuPages, startPage, currentPageContentLink);
+
+        return menuPages;
+    }
+
+    private void AddMainPage(List<MenuPage> menuPages, StartPage startPage, ContentReference currentPageContentLink)
+    {
+        menuPages.Add(
+            new MenuPage
             {
                 Label = startPage.MainMenuLabel ?? startPage.Name,
                 PageReference = startPage.PageLink,
                 IsSelected = startPage.ContentLink.CompareToIgnoreWorkID(currentPageContentLink)
             }
-        ];
+        );
+    }
+
+    private void AddPages(List<MenuPage> menuPages, ContentReference currentPageContentLink)
+    {
         menuPages.AddRange(
             FilterForVisitor.Filter(
                     _contentLoader.GetChildren<MainPageData>(ContentReference.StartPage)
@@ -78,8 +85,30 @@ public class PageViewModelBuilder
                     }
                 )
         );
+    }
 
-        return menuPages;
+    private void AddProductsPage(List<MenuPage> menuPages, StartPage startPage, ContentReference currentPageContentLink)
+    {
+        ContentReference? productsPageReference = startPage.ProductsCatalog;
+        if (productsPageReference is null)
+        {
+            return;
+        }
+
+        StandardCategory? productsPage = _contentLoader.Get<IContent>(productsPageReference) as StandardCategory;
+        if (productsPage is null)
+        {
+            return;
+        }
+
+        menuPages.Add(
+            new MenuPage
+            {
+                Label = productsPage.MainMenuLabel ?? productsPage.Name,
+                PageReference = productsPageReference,
+                IsSelected = productsPageReference.CompareToIgnoreWorkID(currentPageContentLink)
+            }
+        );
     }
 
     private List<ContentReference> GetAncestors()

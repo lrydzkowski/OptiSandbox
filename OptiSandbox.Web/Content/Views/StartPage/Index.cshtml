@@ -1,20 +1,20 @@
-@model IPageViewModel<StartPageViewModel>
+@model StartPageViewModel
 
 <header class="text-center mb-5">
-    <h1 class="display-4">@Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Title)</h1>
-    <p class="lead">@Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Subtitle)</p>
+    <h1 class="display-4">@Html.PropertyFor(viewModel => viewModel.CurrentContent.Title)</h1>
+    <p class="lead">@Html.PropertyFor(viewModel => viewModel.CurrentContent.Subtitle)</p>
 </header>
 
 <div class="row article-list">
-    @foreach (ArticlePage article in Model.CurrentPageViewModel.Articles.Data)
+    @foreach (ArticlePage article in Model.Articles.Data)
     {
         @Html.PropertyFor(_ => article)
     }
 
     @{
-        PaginatedList<ArticlePage> articles = Model.CurrentPageViewModel.Articles;
+        PaginatedList<ArticlePage> articles = Model.Articles;
         int totalPages = (int)Math.Ceiling(articles.Count / (double)articles.PageSize);
-        int currentPage = Model.CurrentPageViewModel.ArticlesCurrentPageIndex;
+        int currentPage = Model.ArticlesCurrentPageIndex;
     }
     @if (totalPages > 1)
     {

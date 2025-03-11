@@ -2,25 +2,13 @@ using OptiSandbox.Web.Content.Models.Pages;
 
 namespace OptiSandbox.Web.Content.Models.ViewModels;
 
-public class StartPageViewModel : ICurrentPageViewModel<StartPage>
+public class StartPageViewModel : PageViewModel<StartPage>
 {
-    public StartPageViewModel(StartPage currentPage)
+    public StartPageViewModel(IPageViewModel<StartPage> pageViewModel) : base(pageViewModel)
     {
-        CurrentPage = currentPage;
     }
 
-    public PaginatedList<ArticlePage> Articles { get; set; } = new();
+    public PaginatedList<ArticlePage> Articles { get; init; } = new();
 
-    public int ArticlesCurrentPageIndex { get; set; } = 1;
-
-    public StartPage CurrentPage { get; }
-}
-
-public class Article
-{
-    public string Title { get; set; } = "";
-
-    public DateTimeOffset CreatedAt { get; set; }
-
-    public string Url { get; set; } = "";
+    public int ArticlesCurrentPageIndex { get; init; } = 1;
 }

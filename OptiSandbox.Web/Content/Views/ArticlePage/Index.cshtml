@@ -1,18 +1,18 @@
-@model IPageViewModel<ICurrentPageViewModel<ArticlePage>>
+@model IPageViewModel<ArticlePage>
 
 <div class="article-container">
     <article>
         <header>
-            <h1 class="display-4">@Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Title)</h1>
+            <h1 class="display-4">@Html.PropertyFor(viewModel => viewModel.CurrentContent.Title)</h1>
             <div class="article-meta">
-                <span>Published: @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.PublishedAt, TemplateNames.OnlyDate)</span>
+                <span>Published: @Html.PropertyFor(viewModel => viewModel.CurrentContent.PublishedAt, TemplateNames.OnlyDate)</span>
                 |
-                <span>Author: @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Author)</span>
+                <span>Author: @Html.PropertyFor(viewModel => viewModel.CurrentContent.Author)</span>
             </div>
         </header>
 
         <div class="article-content">
-            @Html.PropertyFor(viewModel => viewModel.CurrentPageViewModel.CurrentPage.Content)
+            @Html.PropertyFor(viewModel => viewModel.CurrentContent.Content)
         </div>
     </article>
 </div>
