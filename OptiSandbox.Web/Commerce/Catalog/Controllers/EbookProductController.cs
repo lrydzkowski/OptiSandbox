@@ -1,21 +1,21 @@
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using OptiSandbox.Web.Commerce.Catalog.Models.Products;
-using OptiSandbox.Web.Content.Services;
+using OptiSandbox.Web.Commerce.Catalog.Services;
 
 namespace OptiSandbox.Web.Commerce.Catalog.Controllers;
 
 public class EbookProductController : ContentController<EbookProduct>
 {
-    private readonly IPageViewModelBuilder _pageViewModelBuilder;
+    private readonly IEbookProductViewModelBuilder _ebookProductViewModelBuilder;
 
-    public EbookProductController(IPageViewModelBuilder pageViewModelBuilder)
+    public EbookProductController(IEbookProductViewModelBuilder ebookProductViewModelBuilder)
     {
-        _pageViewModelBuilder = pageViewModelBuilder;
+        _ebookProductViewModelBuilder = ebookProductViewModelBuilder;
     }
 
     public IActionResult Index(EbookProduct currentPage)
     {
-        return View(_pageViewModelBuilder.Build(currentPage));
+        return View(_ebookProductViewModelBuilder.Build(currentPage));
     }
 }

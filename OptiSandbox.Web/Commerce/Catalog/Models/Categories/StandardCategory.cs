@@ -30,6 +30,11 @@ public class StandardCategory : NodeContent, ISitePage
     [UIHint(UIHint.Image)]
     public virtual ContentReference? PlaceholderImageCategoryPage { get; set; }
 
+    [Display(Name = "Placeholder image - product page", GroupName = CommerceTabNames.ImagePlaceholders, Order = 200)]
+    [CultureSpecific]
+    [UIHint(UIHint.Image)]
+    public virtual ContentReference? PlaceholderImageProductPage { get; set; }
+
     [Display(Name = "Enable breadcrumbs", GroupName = SystemTabNames.Content, Order = 100)]
     [CultureSpecific]
     public virtual bool EnableBreadcrumbs { get; set; }

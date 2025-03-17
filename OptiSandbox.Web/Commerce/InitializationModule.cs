@@ -30,6 +30,7 @@ public class InitializationModule : IConfigurableModule
     private static void AddServices(IServiceCollection services)
     {
         services.AddScoped<IStandardCategoryViewModelBuilder, StandardCategoryViewModelBuilder>();
+        services.AddScoped<IEbookProductViewModelBuilder, EbookProductViewModelBuilder>();
         services.AddScoped<IPriceResolver, PriceResolver>();
     }
 
