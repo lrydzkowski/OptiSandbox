@@ -2,6 +2,7 @@ using System.Globalization;
 using EPiServer.Find;
 using EPiServer.Find.Cms;
 using EPiServer.Find.Framework;
+using OptiSandbox.Web.Commerce.Catalog.Services;
 using OptiSandbox.Web.Content.Models;
 using OptiSandbox.Web.Content.Models.Pages;
 using OptiSandbox.Web.Content.Models.ViewModels;
@@ -16,9 +17,16 @@ public interface IStartPageViewModelBuilder
 public class StartPageViewModelBuilder
     : PageViewModelBuilder, IStartPageViewModelBuilder
 {
-    public StartPageViewModelBuilder(IContentLoader contentLoader, IHttpContextAccessor httpContextAccessor) : base(
+    public StartPageViewModelBuilder(
+        IContentLoader contentLoader,
+        IHttpContextAccessor httpContextAccessor,
+        IPriceResolver priceResolver,
+        ICartViewModelBuilder cartViewModelBuilder
+    ) : base(
         contentLoader,
-        httpContextAccessor
+        httpContextAccessor,
+        priceResolver,
+        cartViewModelBuilder
     )
     {
     }

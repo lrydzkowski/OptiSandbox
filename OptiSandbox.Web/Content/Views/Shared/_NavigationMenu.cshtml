@@ -21,6 +21,17 @@
                     @Html.ContentLink(menuPage.Label, menuPage.PageReference, null, new { @class = "nav-link" + (menuPage.IsSelected ? " active" : null) })
                 </li>
             }
+            <li class="nav-item">
+                <div
+                    class="cart-icon-wrapper nav-link"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#basketOffcanvas"
+                    aria-controls="basketOffcanvas"
+                >
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count">2</span>
+                </div>
+            </li>
         </ul>
     </div>
 }

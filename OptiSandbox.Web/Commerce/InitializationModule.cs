@@ -32,6 +32,7 @@ public class InitializationModule : IConfigurableModule
         services.AddScoped<IStandardCategoryViewModelBuilder, StandardCategoryViewModelBuilder>();
         services.AddScoped<IEbookProductViewModelBuilder, EbookProductViewModelBuilder>();
         services.AddScoped<IPriceResolver, PriceResolver>();
+        services.AddScoped<ICartViewModelBuilder, CartViewModelBuilder>();
     }
 
     private static void AddViewsCustomPath(IServiceCollection services)

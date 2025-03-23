@@ -15,20 +15,18 @@ public interface IEbookProductViewModelBuilder
 
 public class EbookProductViewModelBuilder : PageViewModelBuilder, IEbookProductViewModelBuilder
 {
-    private readonly IPriceResolver _priceResolver;
-
     private readonly IUrlResolver _urlResolver;
 
     public EbookProductViewModelBuilder(
         IContentLoader contentLoader,
         IHttpContextAccessor httpContextAccessor,
         IUrlResolver urlResolver,
-        IPriceResolver priceResolver
+        IPriceResolver priceResolver,
+        ICartViewModelBuilder cartViewModelBuilder
     ) :
-        base(contentLoader, httpContextAccessor)
+        base(contentLoader, httpContextAccessor, priceResolver, cartViewModelBuilder)
     {
         _urlResolver = urlResolver;
-        _priceResolver = priceResolver;
     }
 
     public EbookProductViewModel Build(EbookProduct ebookProduct)

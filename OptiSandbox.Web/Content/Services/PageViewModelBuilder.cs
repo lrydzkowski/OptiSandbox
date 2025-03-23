@@ -1,6 +1,7 @@
 using EPiServer.Filters;
 using EPiServer.Web.Routing;
 using OptiSandbox.Web.Commerce.Catalog.Models.Categories;
+using OptiSandbox.Web.Commerce.Catalog.Services;
 using OptiSandbox.Web.Content.Models;
 using OptiSandbox.Web.Content.Models.Pages;
 using OptiSandbox.Web.Content.Models.ViewModels;
@@ -15,14 +16,25 @@ public interface IPageViewModelBuilder
 public class PageViewModelBuilder
     : IPageViewModelBuilder
 {
+    private readonly ICartViewModelBuilder _cartViewModelBuilder;
+
     protected readonly IContentLoader _contentLoader;
 
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public PageViewModelBuilder(IContentLoader contentLoader, IHttpContextAccessor httpContextAccessor)
+    protected readonly IPriceResolver _priceResolver;
+
+    public PageViewModelBuilder(
+        IContentLoader contentLoader,
+        IHttpContextAccessor httpContextAccessor,
+        IPriceResolver priceResolver,
+        ICartViewModelBuilder cartViewModelBuilder
+    )
     {
         _contentLoader = contentLoader;
         _httpContextAccessor = httpContextAccessor;
+        _priceResolver = priceResolver;
+        _cartViewModelBuilder = cartViewModelBuilder;
     }
 
     public IPageViewModel<T> Build<T>(T currentContent) where T : IContent
@@ -34,7 +46,8 @@ public class PageViewModelBuilder
             MenuPages = GetMainMenuPages(startPage),
             Ancestors = GetAncestors(),
             CurrentContent = currentContent,
-            EnableBreadcrumbs = (currentContent as ISitePage)?.EnableBreadcrumbs ?? false
+            EnableBreadcrumbs = (currentContent as ISitePage)?.EnableBreadcrumbs ?? false,
+            Cart = _cartViewModelBuilder.Build()
         };
 
         return viewModel;

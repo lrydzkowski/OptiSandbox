@@ -16,7 +16,8 @@ public class CustomViewLocationExpander : IViewLocationExpander
         IEnumerable<string> customViewLocations =
         [
             "/Content/Views/{1}/{0}.cshtml",
-            "/Content/Views/Shared/{0}.cshtml"
+            "/Content/Views/Shared/{0}.cshtml",
+            "/Commerce/Catalog/Views/Shared/{0}.cshtml"
         ];
 
         return customViewLocations.Concat(viewLocations);

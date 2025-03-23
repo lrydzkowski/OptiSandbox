@@ -11,6 +11,8 @@ public interface IPriceResolver
     IPriceValue? GetVariantSalePrice(VariationContent variationContent);
 
     IPriceValue? GetProductSalePrice(ProductContent productContent);
+
+    IPriceValue? GetVariantSalePrice(string code);
 }
 
 public class PriceResolver
@@ -43,18 +45,7 @@ public class PriceResolver
 
     public IPriceValue? GetVariantSalePrice(VariationContent variationContent)
     {
-        PriceFilter filter = new()
-        {
-            Currencies = new List<Currency> { GetCurrentCurrency() }
-        };
-        IEnumerable<IPriceValue>? prices = _priceService.GetPrices(
-            GetCurrentMarket().MarketId,
-            DateTime.UtcNow,
-            new CatalogKey(variationContent.Code),
-            filter
-        );
-
-        return prices.OrderBy(price => price.UnitPrice.Amount).FirstOrDefault();
+        return GetVariantSalePrice(variationContent.Code);
     }
 
     public IPriceValue? GetProductSalePrice(ProductContent productContent)
@@ -69,6 +60,22 @@ public class PriceResolver
             .FirstOrDefault();
 
         return price;
+    }
+
+    public IPriceValue? GetVariantSalePrice(string code)
+    {
+        PriceFilter filter = new()
+        {
+            Currencies = new List<Currency> { GetCurrentCurrency() }
+        };
+        IEnumerable<IPriceValue>? prices = _priceService.GetPrices(
+            GetCurrentMarket().MarketId,
+            DateTime.UtcNow,
+            new CatalogKey(code),
+            filter
+        );
+
+        return prices.OrderBy(price => price.UnitPrice.Amount).FirstOrDefault();
     }
 
     private Currency GetCurrentCurrency()

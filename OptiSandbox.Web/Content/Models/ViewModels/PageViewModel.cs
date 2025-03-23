@@ -1,3 +1,4 @@
+using OptiSandbox.Web.Commerce.Catalog.Models.ViewModels;
 using OptiSandbox.Web.Content.Models.Pages;
 
 namespace OptiSandbox.Web.Content.Models.ViewModels;
@@ -13,6 +14,8 @@ public interface IPageViewModel<out T> where T : IContent
     bool EnableBreadcrumbs { get; init; }
 
     T CurrentContent { get; }
+
+    CartViewModel Cart { get; init; }
 }
 
 public class PageViewModel<T> : IPageViewModel<T> where T : IContent
@@ -27,6 +30,7 @@ public class PageViewModel<T> : IPageViewModel<T> where T : IContent
         MenuPages = pageViewModel.MenuPages;
         Ancestors = pageViewModel.Ancestors;
         CurrentContent = pageViewModel.CurrentContent;
+        Cart = pageViewModel.Cart;
     }
 
     public StartPage StartPage { get; init; } = new();
@@ -38,4 +42,6 @@ public class PageViewModel<T> : IPageViewModel<T> where T : IContent
     public bool EnableBreadcrumbs { get; init; }
 
     public T CurrentContent { get; init; } = default!;
+
+    public CartViewModel Cart { get; init; } = new();
 }

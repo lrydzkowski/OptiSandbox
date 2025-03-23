@@ -17,8 +17,6 @@ public interface IStandardCategoryViewModelBuilder
 
 public class StandardCategoryViewModelBuilder : PageViewModelBuilder, IStandardCategoryViewModelBuilder
 {
-    private readonly IPriceResolver _priceResolver;
-
     private readonly ThumbnailUrlResolver _thumbnailUrlResolver;
 
     private readonly IUrlResolver _urlResolver;
@@ -28,13 +26,13 @@ public class StandardCategoryViewModelBuilder : PageViewModelBuilder, IStandardC
         IHttpContextAccessor httpContextAccessor,
         ThumbnailUrlResolver thumbnailUrlResolver,
         IUrlResolver urlResolver,
-        IPriceResolver priceResolver
+        IPriceResolver priceResolver,
+        ICartViewModelBuilder cartViewModelBuilder
     ) :
-        base(contentLoader, httpContextAccessor)
+        base(contentLoader, httpContextAccessor, priceResolver, cartViewModelBuilder)
     {
         _thumbnailUrlResolver = thumbnailUrlResolver;
         _urlResolver = urlResolver;
-        _priceResolver = priceResolver;
     }
 
     public StandardCategoryViewModel Build(StandardCategory standardCategory)
