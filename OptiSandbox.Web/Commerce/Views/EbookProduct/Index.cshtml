@@ -1,0 +1,114 @@
+@using OptiSandbox.Web.Content.Models
+@model OptiSandbox.Web.Commerce.Models.ViewModels.EbookProductViewModel
+
+<div class="product-detail-container">
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="product-image-container">
+                <img
+                    src="@Model.ImageUrl"
+                    class="img-fluid product-detail-img"
+                    alt="@Model.CurrentContent.Name"
+                />
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="product-info">
+                <h1 class="product-title">@Model.CurrentContent.Name</h1>
+                <div class="product-category">@Model.Type</div>
+                <div class="product-price mb-4">@(Model.Price?.ToString("C") ?? "-")</div>
+
+                <div class="product-description mb-4">
+                    <h5>Description</h5>
+                    @Html.PropertyFor(viewModel => viewModel.CurrentContent.LongDescription)
+                </div>
+
+                <div class="product-meta mb-4">
+                    <div class="meta-item">
+                        <strong>Format:</strong> @Html.PropertyFor(viewModel => viewModel.CurrentContent.Formats)
+                    </div>
+                    <div class="meta-item">
+                        <strong>Pages:</strong> @Html.PropertyFor(viewModel => viewModel.CurrentContent.Pages)
+                    </div>
+                    <div class="meta-item">
+                        <strong>Published:</strong> @Html.PropertyFor(viewModel => viewModel.CurrentContent.PublishedAt, TemplateNames.OnlyDate)
+                    </div>
+                </div>
+
+                <div class="product-actions">
+                    @using (Html.BeginForm("AddToCart", "EbookProductController"))
+                    {
+                        <div class="quantity-selector">
+                            <button
+                                class="btn btn-outline-secondary qty-btn"
+                                id="decrease"
+                                type="button">
+                                -
+                            </button>
+                            <input
+                                type="text"
+                                inputmode="numeric"
+                                id="quantity"
+                                name="quantity"
+                                class="form-control qty-input"
+                                value="1"
+                                min="1"
+                                max="10"/>
+                            <button
+                                class="btn btn-outline-secondary qty-btn"
+                                id="increase"
+                                type="button">
+                                +
+                            </button>
+                        </div>
+                        <button
+                            class="btn btn-primary btn-lg add-to-cart"
+                            type="submit">
+                            Add to Cart
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Tabs -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <ul
+                class="nav nav-tabs"
+                id="productTabs"
+                role="tablist"
+            >
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link active"
+                        id="details-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#details"
+                        type="button"
+                        role="tab"
+                        aria-controls="details"
+                        aria-selected="true"
+                    >
+                        Details
+                    </button>
+                </li>
+            </ul>
+            <div
+                class="tab-content p-4 border border-top-0 rounded-bottom"
+                id="productTabsContent"
+            >
+                <div
+                    class="tab-pane fade show active"
+                    id="details"
+                    role="tabpanel"
+                    aria-labelledby="details-tab"
+                >
+                    @Html.PropertyFor(viewModel => viewModel.CurrentContent.Details)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Razor;
 
-namespace OptiSandbox.Web.Content.Infrastructure;
+namespace OptiSandbox.Web.Commerce.Infrastructure;
 
 public class CustomViewLocationExpander : IViewLocationExpander
 {
@@ -15,8 +15,7 @@ public class CustomViewLocationExpander : IViewLocationExpander
     {
         IEnumerable<string> customViewLocations =
         [
-            "/Content/Views/{1}/{0}.cshtml",
-            "/Content/Views/Shared/{0}.cshtml",
+            "/Commerce/Views/{1}/{0}.cshtml",
             "/Commerce/Views/Shared/{0}.cshtml"
         ];
 

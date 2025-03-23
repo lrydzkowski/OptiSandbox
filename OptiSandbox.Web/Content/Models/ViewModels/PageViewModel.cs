@@ -1,4 +1,4 @@
-using OptiSandbox.Web.Commerce.Catalog.Models.ViewModels;
+using OptiSandbox.Web.Commerce.Models.ViewModels;
 using OptiSandbox.Web.Content.Models.Pages;
 
 namespace OptiSandbox.Web.Content.Models.ViewModels;
@@ -15,7 +15,7 @@ public interface IPageViewModel<out T> where T : IContent
 
     T CurrentContent { get; }
 
-    CartViewModel Cart { get; init; }
+    MiniCartViewModel MiniCart { get; init; }
 }
 
 public class PageViewModel<T> : IPageViewModel<T> where T : IContent
@@ -30,7 +30,7 @@ public class PageViewModel<T> : IPageViewModel<T> where T : IContent
         MenuPages = pageViewModel.MenuPages;
         Ancestors = pageViewModel.Ancestors;
         CurrentContent = pageViewModel.CurrentContent;
-        Cart = pageViewModel.Cart;
+        MiniCart = pageViewModel.MiniCart;
     }
 
     public StartPage StartPage { get; init; } = new();
@@ -43,5 +43,5 @@ public class PageViewModel<T> : IPageViewModel<T> where T : IContent
 
     public T CurrentContent { get; init; } = default!;
 
-    public CartViewModel Cart { get; init; } = new();
+    public MiniCartViewModel MiniCart { get; init; } = new();
 }

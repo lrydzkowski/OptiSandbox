@@ -2,7 +2,7 @@ using System.Globalization;
 using EPiServer.Find;
 using EPiServer.Find.Cms;
 using EPiServer.Find.Framework;
-using OptiSandbox.Web.Commerce.Catalog.Services;
+using OptiSandbox.Web.Commerce.Services;
 using OptiSandbox.Web.Content.Models;
 using OptiSandbox.Web.Content.Models.Pages;
 using OptiSandbox.Web.Content.Models.ViewModels;

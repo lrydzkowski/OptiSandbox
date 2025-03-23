@@ -1,0 +1,105 @@
+@using OptiSandbox.Web.Commerce.Models.ViewModels
+@model IPageViewModel<IContent>
+
+<div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="basketOffcanvas"
+    aria-labelledby="basketOffcanvasLabel"
+>
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="basketOffcanvasLabel">
+            Your Basket
+        </h5>
+        <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+        ></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="mini-basket">
+            <div class="mini-basket-items">
+                @if (Model.MiniCart.Items.Count == 0)
+                {
+                    <div class="mini-basket-empty d-none text-center py-5">
+                        <div class="mb-3">
+                            <span style="font-size: 3rem">🛒</span>
+                        </div>
+                        <h5>Your basket is empty</h5>
+                        <p class="text-muted mb-4">
+                            Looks like you haven't added any products to your
+                            basket yet.
+                        </p>
+                        <a href="products.html" class="btn btn-primary"
+                        >Start Shopping</a
+                        >
+                    </div>
+                }
+                else
+                {
+                    @foreach (MiniCartItemViewModel item in Model.MiniCart.Items)
+                    {
+                        <div class="mini-basket-item">
+                            <div class="mini-basket-item-img">
+                                <img
+                                    src="@item.ImageUrl"
+                                    class="img-fluid product-detail-img"
+                                    alt="@item.Name"
+                                />
+                            </div>
+                            <div class="mini-basket-item-details">
+                                <h6 class="mini-basket-item-title">@item.Name</h6>
+                                <p class="mini-basket-item-category">E-books</p>
+                                <div class="mini-basket-item-price">@item.Price</div>
+                            </div>
+                            <div class="mini-basket-item-actions">
+                                <div class="mini-basket-item-quantity">
+                                    <button
+                                        class="btn btn-sm btn-outline-secondary mini-qty-btn">
+                                        -
+                                    </button>
+                                    <input
+                                        type="text"
+                                        inputmode="numeric"
+                                        class="form-control form-control-sm mini-qty-input"
+                                        value="@item.Quantity"
+                                        min="1"
+                                        max="10"/>
+                                    <button
+                                        class="btn btn-sm btn-outline-secondary mini-qty-btn">
+                                        +
+                                    </button>
+                                </div>
+                                <button
+                                    class="btn btn-sm text-danger mini-remove-btn">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="mini-basket-summary">
+                <div class="d-flex justify-content-between mb-4">
+                    <strong>Total</strong>
+                    <strong>@Model.MiniCart.Total</strong>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <a
+                        href="basket.html"
+                        class="btn btn-outline-primary"
+                    >View Basket</a
+                    >
+                    <a
+                        href="checkout-shipping.html"
+                        class="btn btn-primary"
+                    >Checkout</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

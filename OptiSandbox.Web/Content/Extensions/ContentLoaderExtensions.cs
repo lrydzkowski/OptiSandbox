@@ -1,6 +1,6 @@
 namespace OptiSandbox.Web.Content.Extensions;
 
-internal static class ContentLoaderExtensions
+public static class ContentLoaderExtensions
 {
     public static IContent? GetAncestorOrSelf(
         this IContentLoader contentLoader,

@@ -3,8 +3,8 @@ using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using Microsoft.AspNetCore.Mvc.Razor;
-using OptiSandbox.Web.Commerce.Catalog.Infrastructure;
-using OptiSandbox.Web.Commerce.Catalog.Services;
+using OptiSandbox.Web.Commerce.Infrastructure;
+using OptiSandbox.Web.Commerce.Services;
 
 namespace OptiSandbox.Web.Commerce;
 

@@ -1,7 +1,7 @@
 using EPiServer.Filters;
 using EPiServer.Web.Routing;
-using OptiSandbox.Web.Commerce.Catalog.Models.Categories;
-using OptiSandbox.Web.Commerce.Catalog.Services;
+using OptiSandbox.Web.Commerce.Models.Categories;
+using OptiSandbox.Web.Commerce.Services;
 using OptiSandbox.Web.Content.Models;
 using OptiSandbox.Web.Content.Models.Pages;
 using OptiSandbox.Web.Content.Models.ViewModels;
@@ -47,7 +47,7 @@ public class PageViewModelBuilder
             Ancestors = GetAncestors(),
             CurrentContent = currentContent,
             EnableBreadcrumbs = (currentContent as ISitePage)?.EnableBreadcrumbs ?? false,
-            Cart = _cartViewModelBuilder.Build()
+            MiniCart = _cartViewModelBuilder.Build()
         };
 
         return viewModel;

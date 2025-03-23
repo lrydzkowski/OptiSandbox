@@ -33,7 +33,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AdditionalFiles Include="Commerce\Views\EbookProduct\Index.cshtml" />
+    <AdditionalFiles Include="Commerce\Views\StandardCategory\Index.cshtml" />
+    <AdditionalFiles Include="Commerce\Views\_ViewImports.cshtml" />
+    <AdditionalFiles Include="Commerce\Views\_ViewStart.cshtml" />
     <AdditionalFiles Include="Content\Views\ArticlePage\Index.cshtml" />
     <AdditionalFiles Include="Content\Views\Shared\Components\ArticlePage\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Commerce\Catalog\Views\EbookProduct\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Commerce\Catalog\Views\Shared\_Cart.cshtml" />
+    <_ContentIncludedByDefault Remove="Commerce\Catalog\Views\StandardCategory\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Commerce\Catalog\Views\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Commerce\Catalog\Views\_ViewStart.cshtml" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using OptiSandbox.Web.Commerce.Catalog.Models.Categories;
+using OptiSandbox.Web.Commerce.Models.Categories;
 
 namespace OptiSandbox.Web.Content.Models.Pages;
 
