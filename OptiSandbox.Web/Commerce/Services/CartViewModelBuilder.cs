@@ -5,6 +5,7 @@ using Mediachase.Commerce.Catalog;
 using Mediachase.Commerce.Pricing;
 using Mediachase.Commerce.Security;
 using OptiSandbox.Web.Commerce.Models.Categories;
+using OptiSandbox.Web.Commerce.Models.Pages;
 using OptiSandbox.Web.Commerce.Models.Variations;
 using OptiSandbox.Web.Commerce.Models.ViewModels;
 using OptiSandbox.Web.Content.Extensions;
@@ -13,7 +14,9 @@ namespace OptiSandbox.Web.Commerce.Services;
 
 public interface ICartViewModelBuilder
 {
-    MiniCartViewModel Build();
+    MiniCartViewModel BuildMiniCartViewModel();
+
+    CartViewModel BuildCartViewModel(CartPage cartPage);
 }
 
 public class CartViewModelBuilder
@@ -44,7 +47,7 @@ public class CartViewModelBuilder
         _urlResolver = urlResolver;
     }
 
-    public MiniCartViewModel Build()
+    public MiniCartViewModel BuildMiniCartViewModel()
     {
         ICart cart = _orderRepository.LoadOrCreateCart<ICart>(
             PrincipalInfo.CurrentPrincipal.GetContactId(),
@@ -67,6 +70,44 @@ public class CartViewModelBuilder
                         ) as StandardCategory;
 
                         MiniCartItemViewModel viewModel = new()
+                        {
+                            Name = lineItem.DisplayName,
+                            Quantity = Convert.ToInt32(lineItem.Quantity),
+                            Price = price?.UnitPrice,
+                            ImageUrl = _urlResolver.GetUrl(standardCategory?.PlaceholderImageCart)
+                        };
+
+                        return viewModel;
+                    }
+                )
+                .ToList(),
+            Total = cart.GetTotal()
+        };
+    }
+
+    public CartViewModel BuildCartViewModel(CartPage cartPage)
+    {
+        ICart cart = _orderRepository.LoadOrCreateCart<ICart>(
+            PrincipalInfo.CurrentPrincipal.GetContactId(),
+            "Default"
+        );
+
+        return new CartViewModel
+        {
+            Items = cart.GetAllLineItems()
+                .Select(
+                    lineItem =>
+                    {
+                        IPriceValue? price = _priceResolver.GetVariantSalePrice(lineItem.Code);
+
+                        ContentReference variationReference = _referenceConverter.GetContentLink(lineItem.Code);
+                        EbookVariation variation = _contentLoader.Get<EbookVariation>(variationReference);
+                        StandardCategory? standardCategory = _contentLoader.GetAncestorOrSelf(
+                            variation,
+                            (content, _) => content is StandardCategory
+                        ) as StandardCategory;
+
+                        CartItemViewModel viewModel = new()
                         {
                             Name = lineItem.DisplayName,
                             Quantity = Convert.ToInt32(lineItem.Quantity),

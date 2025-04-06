@@ -47,7 +47,7 @@ public class PageViewModelBuilder
             Ancestors = GetAncestors(),
             CurrentContent = currentContent,
             EnableBreadcrumbs = (currentContent as ISitePage)?.EnableBreadcrumbs ?? false,
-            MiniCart = _cartViewModelBuilder.Build()
+            MiniCart = _cartViewModelBuilder.BuildMiniCartViewModel()
         };
 
         return viewModel;

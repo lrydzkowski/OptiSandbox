@@ -1,0 +1,146 @@
+@model CartViewModel
+
+<header class="text-center mb-5">
+    <h1 class="display-4">Your Basket</h1>
+    <p class="lead">Review your items before checkout</p>
+</header>
+
+<div class="row">
+    <div class="col-lg-8">
+        @if (Model.Items.Count == 0)
+        {
+            <div class="empty-cart-message d-none text-center py-5">
+                <div class="mb-3">
+                    <span style="font-size: 3rem">🛒</span>
+                </div>
+                <h3>Your basket is empty</h3>
+                <p class="text-muted mb-4">
+                    Looks like you haven't added any products to
+                    your basket yet.
+                </p>
+                <a href="products.html" class="btn btn-primary"
+                >Continue Shopping</a
+                >
+            </div>
+        }
+        else
+        {
+            <div class="cart-items mb-4">
+                @foreach (CartItemViewModel item in Model.Items)
+                {
+                    <div class="card cart-item mb-3">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-2 col-3">
+                                    <img
+                                        src="@item.ImageUrl"
+                                        class="img-fluid product-detail-img"
+                                        alt="@item.Name"
+                                    />
+                                </div>
+                                <div class="col-md-4 col-9">
+                                    <h5 class="cart-item-title">
+                                        @item.Name
+                                    </h5>
+                                    <p class="cart-item-category mb-0">
+                                        E-books
+                                    </p>
+                                </div>
+                                <div
+                                    class="col-md-2 col-4 mt-3 mt-md-0">
+                                    <div class="quantity-selector-sm">
+                                        <button
+                                            class="btn btn-sm btn-outline-secondary qty-btn">
+                                            -
+                                        </button>
+                                        <input
+                                            type="text"
+                                            inputmode="numeric"
+                                            class="form-control form-control-sm qty-input"
+                                            value="@item.Quantity"
+                                            min="1"
+                                            max="10"/>
+                                        <button
+                                            class="btn btn-sm btn-outline-secondary qty-btn">
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-md-2 col-4 mt-3 mt-md-0 text-md-end">
+                                    <span class="cart-item-price">@item.Price</span
+                                    >
+                                </div>
+                                <div
+                                    class="col-md-2 col-4 mt-3 mt-md-0 text-end">
+                                    <button
+                                        class="btn btn-sm btn-outline-danger remove-item">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+        <!-- Cart Actions -->
+        <div
+            class="cart-actions d-flex justify-content-between mb-5"
+        >
+            <a
+                href="products.html"
+                class="btn btn-outline-primary"
+            >Continue Shopping</a
+            >
+            <button class="btn btn-outline-secondary">
+                Update Cart
+            </button>
+        </div>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="col-lg-4">
+        <div class="card order-summary">
+            <div class="card-header">
+                <h5 class="mb-0">Order Summary</h5>
+            </div>
+            <div class="card-body">
+                <div
+                    class="d-flex justify-content-between mb-4"
+                >
+                    <strong>Total</strong>
+                    <strong>@Model.Total</strong>
+                </div>
+
+                <!-- Coupon Code -->
+                <div class="coupon-form mb-4">
+                    <label for="couponCode" class="form-label"
+                    >Have a coupon?</label
+                    >
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="couponCode"
+                            placeholder="Enter code"
+                        />
+                        <button
+                            class="btn btn-outline-secondary"
+                            type="button"
+                        >
+                            Apply
+                        </button>
+                    </div>
+                </div>
+
+                <a
+                    href="checkout-shipping.html"
+                    class="btn btn-primary w-100"
+                >Proceed to Checkout</a
+                >
+            </div>
+        </div>
+    </div>
+</div>
