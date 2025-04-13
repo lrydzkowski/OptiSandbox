@@ -1,5 +1,7 @@
+using EPiServer.Core.Routing;
 using Microsoft.AspNetCore.Mvc.Razor;
 using OptiSandbox.Web.Content.Infrastructure;
+using OptiSandbox.Web.Content.Routers;
 using OptiSandbox.Web.Content.Services;
 using Serilog;
 
@@ -28,5 +30,6 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IPageViewModelBuilder, PageViewModelBuilder>();
         services.AddScoped<IStartPageViewModelBuilder, StartPageViewModelBuilder>();
+        services.AddSingleton<IPartialRouter, CustomPartialRouter>();
     }
 }
